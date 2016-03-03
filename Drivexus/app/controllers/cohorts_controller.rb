@@ -2,7 +2,7 @@ class CohortsController < ApplicationController
   before_action :load_cohort, only: [:show, :edit, :destroy]
 
   def index
-    @cohort = Cohort.all
+    @cohorts = Cohort.all
   end
 
   def new
@@ -10,22 +10,22 @@ class CohortsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def create
-    @cohort = Cohort.new
+    @cohort = Cohort.new(cohort_params)
     if @cohort.save
+      redirect_to cohorts_path
+    else
+      render :new
     end
   end
 
   def destroy
     @cohort.destroy
-
   end
 
   private

@@ -1,3 +1,5 @@
-<%= cohort.name %>
-<%= cohort.start_date %>
-<%= cohort.end_date %>
+<div class="cohort-name">
+  <%= link_to cohort.name, cohort %>
+  <%= cohort.start_display %>
+  <%= cohort.end_display %>
+</div>

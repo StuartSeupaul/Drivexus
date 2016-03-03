@@ -1,3 +1,7 @@
 <h1>All Cohorts</h1>
 
-<%= render @cohorts %>
+<% if @cohorts.any? %>
+  <%= render @cohorts %>
+<% end %>
+
+<%= link_to "Create New Cohort", new_cohort_path %>

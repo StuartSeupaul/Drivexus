@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => 'users#index'
+  root :to => 'cohorts#index'
   resources :user_sessions
   resources :users
   resources :cohorts
