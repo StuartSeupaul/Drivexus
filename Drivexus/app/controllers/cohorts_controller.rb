@@ -10,9 +10,11 @@ class CohortsController < ApplicationController
   end
 
   def show
+    @exams = @cohort.exams
+    @exam = @cohort.exams.build
   end
 
-  def edit
+  def update
   end
 
   def create

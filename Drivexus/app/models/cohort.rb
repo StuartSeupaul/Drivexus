@@ -1,4 +1,6 @@
 class Cohort < ActiveRecord::Base
+  has_many :exams
+
   def end_display
     mytime = self.end_date
     mytime.strftime("%B %-d, %Y")

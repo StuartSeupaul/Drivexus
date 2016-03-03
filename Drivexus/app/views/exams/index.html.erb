@@ -1,0 +1,9 @@
+<% if @exams.any? %>
+  <% @exams.each do |exam| %>
+    <%= link_to exam.name, exam_path(exam) %>
+  <% end %>
+<% end %>
+
+<div>Create New Exam</div>
+
+<%= render 'form' %>
