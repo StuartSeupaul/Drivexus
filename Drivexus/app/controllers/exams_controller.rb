@@ -1,8 +1,11 @@
 class ExamsController < ApplicationController
-  before_action :load_cohort, only [:show, :destroy, :edit, :new]
+  before_action :load_cohort, only: [:show, :destroy, :edit, :new, :create]
 
   def index
     @exams = @cohort.exams
+  end
+
+  def new
     @exam = @cohort.exams.build
   end
 
@@ -19,6 +22,8 @@ class ExamsController < ApplicationController
   end
 
   def create
+    @exam = @cohort.exams.build(exam_params)
+
     if @exam.save
       redirect_to cohorts_path
     else

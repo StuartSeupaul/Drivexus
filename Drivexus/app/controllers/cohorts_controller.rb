@@ -11,7 +11,6 @@ class CohortsController < ApplicationController
 
   def show
     @exams = @cohort.exams
-    @exam = @cohort.exams.build
   end
 
   def update
