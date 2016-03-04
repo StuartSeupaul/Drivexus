@@ -1,0 +1,9 @@
+<%= form_for [@user, @appointment]  do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description%>
+
+<%= f.label :time %>
+<%= f.datetime_local_field :time%>
+
+<%= f.submit  %>
+<% end %>

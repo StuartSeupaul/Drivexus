@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   root :to => 'cohorts#index'
 
   resources :user_sessions
-  resources :users
+  resources :users do
+    resources :appointments
+  end
   resources :cohorts do
     resources :exams
   end
   resources :questions
+
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

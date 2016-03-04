@@ -1,0 +1,5 @@
+<% if @appointments.any? %>
+  <% @appointments.each do |appointment| %>
+    <%= link_to appointment.description, user_appointment_path(@user, appointment) %>
+  <% end %>
+<% end %>
