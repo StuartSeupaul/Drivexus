@@ -1,5 +1,6 @@
 class ExamsController < ApplicationController
   before_action :load_cohort, only: [:show, :destroy, :edit, :new, :create]
+  before_action :load_exam, only: [:show]
 
   def index
     @exams = @cohort.exams
@@ -7,9 +8,11 @@ class ExamsController < ApplicationController
 
   def new
     @exam = @cohort.exams.build
+
   end
 
   def show
+
   end
 
   def edit
@@ -25,7 +28,7 @@ class ExamsController < ApplicationController
     @exam = @cohort.exams.build(exam_params)
 
     if @exam.save
-      redirect_to cohorts_path
+      redirect_to cohort_path(@cohort)
     else
       render :new
     end
@@ -46,5 +49,7 @@ class ExamsController < ApplicationController
     @cohort = Cohort.find(params[:cohort_id])
   end
 
-
+  def load_exam
+    @exam = Exam.find(params[:id])
+  end
 end

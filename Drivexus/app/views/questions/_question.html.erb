@@ -1,0 +1,19 @@
+<%= form_for @question do |f| %>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <h2>Choices</h2>
+
+  <%= f.fields_for :choices do |choice_fields| %>
+    <%= render 'choices_fields', f: choice_fields %>
+  <% end %>
+
+  <div>
+    <%= link_to_add_association "Add Choice", f, :choices %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

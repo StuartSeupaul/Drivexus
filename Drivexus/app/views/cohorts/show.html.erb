@@ -4,11 +4,11 @@
 <%= @cohort.end_display %></p>
 
 <% if @exams.any? %>
-  <div>
     <% @exams.each do |exam| %>
-      <%= exam.name %>
+      <div>
+        <%= link_to exam.name, cohort_exam_path(@cohort, exam) %>
+      </div>
     <% end %>
-  </div>
 <% end %>
 
 <%= link_to "Create New Exam", new_cohort_exam_path(@cohort) %>

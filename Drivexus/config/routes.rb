@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cohorts do
     resources :exams
   end
+  resources :questions
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
