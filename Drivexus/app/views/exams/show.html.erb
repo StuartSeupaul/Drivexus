@@ -1,3 +1,13 @@
 <h1><%= @exam.name %></h1>
 
-<%= link_to "New Question", new_question_path %>
+<%= form_tag submission_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+  <%= text_field_tag(
+      :search,
+      params[:search],
+      placeholder: "Search",
+      class: "form-control"
+  ) %>
+<% end %>
+
+<h3>List of All Available Questions</h3>
+<%= render 'questions/form' %>

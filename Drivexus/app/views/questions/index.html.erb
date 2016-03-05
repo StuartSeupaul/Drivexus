@@ -1,14 +1,3 @@
-<% @questions.each do |question| %>
-  <div class="question-class">
-    <h3><%= question.content %></h3>
-    <% if question.choices.any? %>
-      <ul>
-        <% question.choices.each do |choice| %>
-          <li><%= choice.content %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to "New Question", new_question_path %>

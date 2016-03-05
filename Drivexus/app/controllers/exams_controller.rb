@@ -12,7 +12,7 @@ class ExamsController < ApplicationController
   end
 
   def show
-
+    @questions = Question.all
   end
 
   def edit
