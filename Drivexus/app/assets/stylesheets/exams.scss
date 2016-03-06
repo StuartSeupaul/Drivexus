@@ -1,3 +1,44 @@
 // Place all the styles related to the Exams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.collapse{
+  display:inline-block;
+}
+.collapse + input{
+  display:none;
+}
+.collapse + input + *{
+  display:none;
+}
+.collapse+ input:checked + *{
+  display:block;
+}
+
+.collapse {
+  background: #77008f;
+  background-image: -webkit-linear-gradient(top, #77008f, #d963f7);
+  background-image: -moz-linear-gradient(top, #77008f, #d963f7);
+  background-image: -ms-linear-gradient(top, #77008f, #d963f7);
+  background-image: -o-linear-gradient(top, #77008f, #d963f7);
+  background-image: linear-gradient(to bottom, #77008f, #d963f7);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #f0f0f0;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.collapse:hover {
+  background: #e500fa;
+  background-image: -webkit-linear-gradient(top, #e500fa, #e0aadc);
+  background-image: -moz-linear-gradient(top, #e500fa, #e0aadc);
+  background-image: -ms-linear-gradient(top, #e500fa, #e0aadc);
+  background-image: -o-linear-gradient(top, #e500fa, #e0aadc);
+  background-image: linear-gradient(to bottom, #e500fa, #e0aadc);
+  text-decoration: none;
+}

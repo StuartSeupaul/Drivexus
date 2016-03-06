@@ -1,13 +1,33 @@
 <h1><%= @exam.name %></h1>
 
-<%= form_tag submission_path, method: :get, class: "navbar-form navbar-left search-form" do %>
-  <%= text_field_tag(
-      :search,
-      params[:search],
-      placeholder: "Search",
-      class: "form-control"
-  ) %>
+<% if @attachedquestions.any? %>
+  <h3>List of Questions on Exam</h3>
+  <% @attachedquestions.each do |question| %>
+    <div class="attached-question-class">
+      <h3><%= question.id %>) <%= question.content %></h3>
+      <% if question.choices.any? %>
+        <ul>
+          <% question.choices.each do |choice| %>
+            <li><%= choice.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end  %>
+  <!-- <%= render 'questions/form', :collection => @attachedquestions, as: :questions  %> -->
 <% end %>
 
-<h3>List of All Available Questions</h3>
-<%= render 'questions/form' %>
+<%= form_for @attachedquestion do |f| %>
+  <%= f.hidden_field(:exam_id, :value => @exam.id) %>
+  <%= f.text_field :question_id %>
+  <%= f.submit %>
+<% end %>
+
+<br>
+<label class="collapse" for="_1">List Of Questions Available To Add</label>
+<input id="_1" type="checkbox">
+
+<div class="list-of-questions">
+  <div><%= link_to "Add New Question", new_question_path %></div>
+  <%= render 'questions/form' %>
+</div>

@@ -1,5 +1,5 @@
 class Exam < ActiveRecord::Base
   belongs_to :cohort
-  has_many :exam_questions
-
+  has_many :attacheds
+  has_many :questions, :through => :attacheds
 end

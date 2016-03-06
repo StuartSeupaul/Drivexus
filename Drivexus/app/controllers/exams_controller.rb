@@ -13,6 +13,8 @@ class ExamsController < ApplicationController
 
   def show
     @questions = Question.all
+    @attachedquestion = Attached.new
+    @attachedquestions = @exam.questions
   end
 
   def edit
