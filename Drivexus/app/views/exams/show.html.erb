@@ -29,5 +29,16 @@
 
 <div class="list-of-questions">
   <div><%= link_to "Add New Question", new_question_path %></div>
-  <%= render 'questions/form' %>
+  <% @unusedquestions.each do |question| %>
+    <div class="question-class" data-qid="<%= question.id %>">
+      <h3><%= question.id %>) <%= question.content %></h3>
+      <% if question.choices.any? %>
+        <ul>
+          <% question.choices.each do |choice| %>
+            <li><%= choice.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
 </div>

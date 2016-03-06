@@ -15,6 +15,8 @@ class ExamsController < ApplicationController
     @questions = Question.all
     @attachedquestion = Attached.new
     @attachedquestions = @exam.questions
+
+    @unusedquestions = @questions - @attachedquestions
   end
 
   def edit
