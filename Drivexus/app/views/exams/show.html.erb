@@ -3,8 +3,8 @@
 <div class="attachedquestionlist">
   <% if @attachedquestions.any? %>
     <h3>List of Questions on Exam</h3>
-    <% @attachedquestions.each do |question| %>
-      <%= render partial: 'attachedquestion', locals: {attachedquestion: question}%>
+    <% @attachedquestions.each_with_index do |question, index| %>
+      <%= render partial: 'attachedquestion', locals: {attachedquestion: question, index: index}%>
     <% end %>
   <% end %>
 </div>
@@ -21,7 +21,7 @@
 
 <div class="list-of-questions">
   <div><%= link_to "Add New Question", new_question_path %></div>
-  <% @unusedquestions.each do |question| %>
-    <%= render partial: 'questions/form', locals: {question: question}%>
-  <% end %>
+  <div class="unusedlist">
+    <%= render partial: 'questions/form', collection: @unusedquestions, as: :question%>
+  </div>
 </div>

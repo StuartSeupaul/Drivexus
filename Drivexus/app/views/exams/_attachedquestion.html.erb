@@ -1,9 +1,15 @@
 <div class="attached-question-class">
-  <h3><%= attachedquestion.id %>) <%= attachedquestion.content %></h3>
+  <h3>
+    <% if index != nil%>
+      <%= index + 1 %>)
+    <% end %>
+    <%= attachedquestion.content %>
+  </h3>
   <% if attachedquestion.choices.any? %>
     <ul>
       <% attachedquestion.choices.each do |choice| %>
-        <li><%= choice.content %></li>
+        <% choice.correct == 1 ? color_class = "correct" : color_class = "incorrect"%>
+        <li class="<%= color_class %>"><%= choice.content %></li>
       <% end %>
     </ul>
   <% end %>

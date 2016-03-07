@@ -1,9 +1,10 @@
 <div class="question-class" data-qid="<%= question.id %>">
-  <h3><%= question.id %>) <%= question.content %></h3>
+  <h3><%= question.content %></h3>
   <% if question.choices.any? %>
     <ul>
       <% question.choices.each do |choice| %>
-        <li><%= choice.content %></li>
+        <% choice.correct == 1 ? color_class = "correct" : color_class = "incorrect"%>
+        <li class="<%= color_class %>"><%= choice.content %></li>
       <% end %>
     </ul>
   <% end %>
