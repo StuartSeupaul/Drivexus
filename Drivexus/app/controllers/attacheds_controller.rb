@@ -2,8 +2,10 @@ class AttachedsController < ApplicationController
   def create
     @attachedquestion = Attached.new(attached_params)
 
-    if @attachedquestion.save
-      redirect_to :back
+    respond_to do |format|
+      if @attachedquestion.save
+        format.js
+      end
     end
   end
 

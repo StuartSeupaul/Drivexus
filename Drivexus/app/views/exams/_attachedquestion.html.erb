@@ -1,0 +1,10 @@
+<div class="attached-question-class">
+  <h3><%= attachedquestion.id %>) <%= attachedquestion.content %></h3>
+  <% if attachedquestion.choices.any? %>
+    <ul>
+      <% attachedquestion.choices.each do |choice| %>
+        <li><%= choice.content %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
