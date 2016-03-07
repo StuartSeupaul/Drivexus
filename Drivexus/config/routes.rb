@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   end
   resources :questions
   resources :attacheds, only: [:create]
+  resources :answers
+  resources :scantron
 
-
+  post 'cohorts/:id/exams/:id/mark' => 'exams#mark', :as => :mark
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 

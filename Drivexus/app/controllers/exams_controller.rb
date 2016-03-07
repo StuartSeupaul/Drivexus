@@ -6,17 +6,21 @@ class ExamsController < ApplicationController
     @exams = @cohort.exams
   end
 
+
   def new
     @exam = @cohort.exams.build
-
   end
 
   def show
+    # For creating an exam
     @questions = Question.all
     @attachedquestion = Attached.new
     @attachedquestions = @exam.questions
-
     @unusedquestions = @questions - @attachedquestions
+
+    # For doing an exam
+    @scantron = Scantron.new(user_id: current_user.id, exam_id: @exam.id)
+    @answers = []
   end
 
   def edit

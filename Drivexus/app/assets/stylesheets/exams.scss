@@ -56,3 +56,14 @@
   color: red;
   font-weight: bolder;
 }
+
+.attached-question-class:hover {
+  border-bottom: 4px solid rgb(111, 41, 212);
+  border-top: 4px solid rgb(111, 41, 212);
+  background-color: black;
+  color: white;
+}
+
+.questioncontent {
+  font-weight: bolder;
+}

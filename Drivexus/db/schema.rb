@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306172925) do
+ActiveRecord::Schema.define(version: 20160307040548) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "scantron_id"
+    t.integer  "question_id"
+    t.boolean  "correct"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "attacheds", force: :cascade do |t|
     t.integer  "question_id"
@@ -60,6 +68,13 @@ ActiveRecord::Schema.define(version: 20160306172925) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "scantrons", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false

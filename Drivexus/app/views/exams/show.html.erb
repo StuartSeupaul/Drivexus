@@ -20,8 +20,27 @@
 <input id="_1" type="checkbox">
 
 <div class="list-of-questions">
-  <div><%= link_to "Add New Question", new_question_path %></div>
+  <div>
+    <%= link_to "Add New Question", new_question_path %>
+  </div>
   <div class="unusedlist">
     <%= render partial: 'questions/form', collection: @unusedquestions, as: :question%>
   </div>
 </div>
+
+<% if current_user %>
+  <h1>Test</h1>
+  <%= form_for @scantron, :url => {:action => 'scantron', :method => 'create'} do |g| %>
+    <% @attachedquestions.each do |question| %>
+      <p class="questioncontent"><%= question.content %></p>
+      <%= form_for Answer.new do |f| %>
+        <% question.choices.each do |choice| %>
+          <%= f.label :correct, choice.content %>
+          <%= f.check_box :correct %>
+          <br>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= g.submit %>
+  <% end %>
+<% end %>
