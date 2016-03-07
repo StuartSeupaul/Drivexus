@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :load_user
   before_action :load_appointment, only: [:show, :edit, :destroy]
+  load_and_authorize_resource
 
   def index
 
@@ -28,11 +29,10 @@ class AppointmentsController < ApplicationController
       render :new
     end
 
-
-
   end
 
   def show
+
 
   end
 
@@ -52,6 +52,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
+    redirect_to user_appointments_path
 
   end
 

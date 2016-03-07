@@ -12,11 +12,8 @@ class Ability
       can :read, Appointment
       can :create, Appointment
       can :update, Appointment
-    
     end
-
   end
-
 end
     # Define abilities for the passed in user here. For example:
     #
