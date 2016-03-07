@@ -30,17 +30,17 @@
 
 <% if current_user %>
   <h1>Test</h1>
-  <%= form_for @scantron, :url => {:action => 'scantron', :method => 'create'} do |g| %>
-    <% @attachedquestions.each do |question| %>
-      <p class="questioncontent"><%= question.content %></p>
+  <% @attachedquestions.each do |question| %>
+    <p class="questioncontent"><%= question.content %></p>
       <%= form_for Answer.new do |f| %>
         <% question.choices.each do |choice| %>
-          <%= f.label :correct, choice.content %>
-          <%= f.check_box :correct %>
-          <br>
-        <% end %>
+        <%= f.label :correct, choice.content %>
+        <%= f.check_box :correct %>
+        <br>
       <% end %>
     <% end %>
+  <% end %>
+  <%= form_for @scantron, :url => scantron_index_path do |g| %>
     <%= g.submit %>
   <% end %>
 <% end %>

@@ -27,4 +27,12 @@ $(document).on('ready page:load', function () {
     $('#new_attached').trigger('submit');
   });
 
+  $('#new_scantron').submit(function (e) {
+    e.preventDefault();
+
+    $('#new_answer').each(function () {
+      console.log($(this));
+    });
+  });
+
 });
