@@ -14,8 +14,10 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @appointment = @user.appointments.find(@user_id, @appointment)
 
   end
+
 
   def create
     @appointment = @user.appointments.build(appointment_params)
@@ -35,15 +37,24 @@ class AppointmentsController < ApplicationController
   end
 
   def update
+
+   @appointment = Appointment.find(params[:id])
+
     if @appointment.update_attributes(appointment_params)
       redirect_to user_appointment_path(@user, @appointment)
+
+    else
+      render :edit
+
     end
+
   end
 
   def destroy
     @appointment.destroy
-    link_to user_path 
+
   end
+
   private
 
   def appointment_params

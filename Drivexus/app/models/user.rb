@@ -1,10 +1,5 @@
 class User < ActiveRecord::Base
-  rolify :before_add => :before_add_method
   has_many :appointments
-
-  def before_add_method(role)
-
-  end
 
   authenticates_with_sorcery!
 
@@ -13,5 +8,9 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
   validates :email, uniqueness: true
+
+  ROLES = %i[admin student]
+
+
 
 end

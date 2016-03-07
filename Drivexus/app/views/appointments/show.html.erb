@@ -1,4 +1,12 @@
 <h1><%= @appointment.description %></h1>
 <h1><%= @appointment.time%></h1>
 
+<p>
+  <% if can? :update, @appointment %>
+  <%= link_to "Edit", edit_user_appointment_path(@user.id, @appointment.id) %>
+  <% end %>
+
+  <% if can? :destroy, @appointment %>
+  <%= link_to "Delete", user_appointment_path(@user.id, @appointment.id), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
 <%= link_to "New Appointment", new_user_appointment_path(@user) %>
