@@ -22,17 +22,27 @@ $(document).on('ready page:load', function () {
   // });
 
   $('.question-class').click(function () {
-    var questionID = parseInt($(this).attr('data-qid'));
-    $('#attached_question_id').val(questionID);
-    $('#new_attached').trigger('submit');
+    var questionID = parseInt($(this).attr('data-qid'));   // get value of the answer (1 = true, 0 = false) from the form
+    $('#attached_question_id').val(questionID);            // put the value in the corresponding field
+    $('#new_attached').trigger('submit');                  // submit the form
   });
 
+  // needs scantron_id, user_id, correct
   $('#new_scantron').submit(function (e) {
     e.preventDefault();
 
-    $('#new_answer').each(function () {
-      console.log($(this));
+    var score = 0;
+    $('#new_answer input[type=checkbox]').each(function() {
+      var studentAnswer = $(this).is(':checked');
+      var correctAnswer = parseInt($(this).attr('data-spoon'));
+      if ((studentAnswer === true) && (correctAnswer === 1))
+      {
+        score ++;
+      }
     });
+
+    alert(score);
+
   });
 
 });

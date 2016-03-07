@@ -19,8 +19,12 @@ class ExamsController < ApplicationController
     @unusedquestions = @questions - @attachedquestions
 
     # For doing an exam
-    @scantron = Scantron.new(user_id: current_user.id, exam_id: @exam.id)
-    @answers = []
+    if Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
+      @scantron = Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
+    else
+      @scantron = Scantron.new(user_id: current_user.id, exam_id: @exam.id, completed: false)
+      @scantron.save
+    end
   end
 
   def edit

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :questions
   resources :attacheds, only: [:create]
   resources :answers
-  resources :scantron
+
+  post '/scantrons' => 'scantrons#create', :as => :scantrons
 
   post 'cohorts/:id/exams/:id/mark' => 'exams#mark', :as => :mark
   get 'login' => 'user_sessions#new', :as => :login

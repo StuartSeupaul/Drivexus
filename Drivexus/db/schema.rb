@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307040548) do
+ActiveRecord::Schema.define(version: 20160307220423) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "scantron_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160307040548) do
     t.integer  "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "completed"
   end
 
   create_table "users", force: :cascade do |t|

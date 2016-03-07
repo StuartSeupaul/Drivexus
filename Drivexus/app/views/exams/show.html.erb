@@ -35,12 +35,19 @@
       <%= form_for Answer.new do |f| %>
         <% question.choices.each do |choice| %>
         <%= f.label :correct, choice.content %>
-        <%= f.check_box :correct %>
+        <%= f.check_box :correct, :data => {:spoon => choice.correct}  %>
         <br>
       <% end %>
+
+      <%= form_for Answer.new do |f| %>
+        <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
+        <%= f.hidden_field(:question_id, :value => question.id) %>
+        <%= f.hidden_field(:correct, :value => false, :id => 'realanswerform') %>
+      <% end %>
+
     <% end %>
   <% end %>
-  <%= form_for @scantron, :url => scantron_index_path do |g| %>
-    <%= g.submit %>
+  <%= form_for @scantron, :url => scantrons_path do |g| %>
+    <%= g.submit "Grade Test" %>
   <% end %>
 <% end %>
