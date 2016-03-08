@@ -23,7 +23,6 @@ class ExamsController < ApplicationController
       @scantron = Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
     else
       @scantron = Scantron.new(user_id: current_user.id, exam_id: @exam.id, completed: false)
-      @scantron.save
     end
   end
 

@@ -33,16 +33,18 @@ $(document).on('ready page:load', function () {
 
     var score = 0;
     $('#new_answer input[type=checkbox]').each(function() {
-      var studentAnswer = $(this).is(':checked');
-      var correctAnswer = parseInt($(this).attr('data-spoon'));
-      if ((studentAnswer === true) && (correctAnswer === 1))
+      var studentAnswer = $(this).is(':checked');                 // checks if the box is checked
+      var correctAnswer = parseInt($(this).attr('data-spoon'));   // gather the correct answer
+      if ((studentAnswer === true) && (correctAnswer === 1))      // sees if the user selected the correct answer
       {
-        score ++;
+        idName = '#' + $(this).attr('data-qnum');
+        $(idName).val(true);
       }
     });
 
-    alert(score);
-
+    $('.realanswerform').each(function() {
+      $(this).trigger('submit');
+    });
   });
 
 });

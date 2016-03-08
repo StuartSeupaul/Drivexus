@@ -35,19 +35,20 @@
       <%= form_for Answer.new do |f| %>
         <% question.choices.each do |choice| %>
         <%= f.label :correct, choice.content %>
-        <%= f.check_box :correct, :data => {:spoon => choice.correct}  %>
+        <%= f.check_box :correct, :data => {:spoon => choice.correct, :qnum => question.id}  %>
         <br>
       <% end %>
 
-      <%= form_for Answer.new do |f| %>
+      <%= form_for Answer.new, :html => {:class => 'realanswerform'}, remote: true do |f| %>
         <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
         <%= f.hidden_field(:question_id, :value => question.id) %>
-        <%= f.hidden_field(:correct, :value => false, :id => 'realanswerform') %>
+        <%= f.hidden_field(:correct, :value => false, :class => 'realanswerform', :id => question.id) %>
+        <%= f.submit :class => 'realanswersubmit' %>
       <% end %>
 
     <% end %>
   <% end %>
-  <%= form_for @scantron, :url => scantrons_path do |g| %>
+  <%= form_for Scantron.new, :url => scantrons_path do |g| %>
     <%= g.submit "Grade Test" %>
   <% end %>
 <% end %>
