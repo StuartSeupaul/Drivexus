@@ -27,10 +27,13 @@ $(document).on('ready page:load', function () {
     $('#new_attached').trigger('submit');                  // submit the form
   });
 
-  // needs scantron_id, user_id, correct
-  $('#new_scantron').submit(function (e) {
-    e.preventDefault();
+  $('#choicecontainer').click(function () {
+    $(this).toggleClass('choicecontainerclicked');
+  });
 
+  // needs scantron_id, user_id, correct
+  $('#testsubmitbutton').click(function () {
+    console.log("working")
     var score = 0;
     $('#new_answer input[type=checkbox]').each(function() {
       var studentAnswer = $(this).is(':checked');                 // checks if the box is checked
@@ -39,9 +42,11 @@ $(document).on('ready page:load', function () {
       {
         idName = '#' + $(this).attr('data-qnum');
         $(idName).val(true);
+        score++;
       }
     });
 
+    alert(score);
     $('.realanswerform').each(function() {
       $(this).trigger('submit');
     });

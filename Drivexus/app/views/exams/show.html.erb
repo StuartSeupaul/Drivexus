@@ -30,25 +30,24 @@
 
 <% if current_user %>
   <h1>Test</h1>
-  <% @attachedquestions.each do |question| %>
-    <p class="questioncontent"><%= question.content %></p>
-      <%= form_for Answer.new do |f| %>
-        <% question.choices.each do |choice| %>
-        <%= f.label :correct, choice.content %>
-        <%= f.check_box :correct, :data => {:spoon => choice.correct, :qnum => question.id}  %>
-        <br>
-      <% end %>
-
+  <div class="questioncontainer">
+    <% @attachedquestions.each do |question| %>
+      <!-- Hidden form for submitting an answer  -->
       <%= form_for Answer.new, :html => {:class => 'realanswerform'}, remote: true do |f| %>
         <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
         <%= f.hidden_field(:question_id, :value => question.id) %>
         <%= f.hidden_field(:correct, :value => false, :class => 'realanswerform', :id => question.id) %>
         <%= f.submit :class => 'realanswersubmit' %>
       <% end %>
+      <!-- Visible div to click choices  -->
+      <p class="questioncontent"><%= question.content %></p>
+      <% question.choices.each do |choice| %>
+        <div class="choicecontainernormal" id="choicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
+          <%= choice.content %>
+        </div>
+      <% end %>
 
     <% end %>
-  <% end %>
-  <%= form_for Scantron.new, :url => scantrons_path do |g| %>
-    <%= g.submit "Grade Test" %>
-  <% end %>
+  </div>
+  <a href="#" class="action-button shadow animate blue" id="testsubmitbutton">Submit</a>
 <% end %>

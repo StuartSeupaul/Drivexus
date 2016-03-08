@@ -71,3 +71,61 @@
 .realanswersubmit {
   display :none;
 }
+
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+	position: relative;
+	padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+	border-radius: 10px;
+	font-family: 'Times New Roman', cursive;
+	font-size: 25px;
+	color: #FFF;
+  font-weight: bolder;
+	text-decoration: none;
+}
+
+.blue
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+#choicecontainer {
+  margin: 10px;
+  padding: 10px;
+}
+
+.choicecontainernormal:hover {
+  background-color: rgb(174, 93, 230);
+  border: 2px solid black;
+  color: white;
+  font-weight: bolder;
+}
+
+.choicecontainernormal {
+  border: 1px solid rgb(57, 17, 49);
+  display: block;
+}
+
+.choicecontainerclicked {
+  background-color: rgb(65, 0, 75);
+  border: 2px solid black;
+  color: white;
+  font-weight: bolder;
+}
