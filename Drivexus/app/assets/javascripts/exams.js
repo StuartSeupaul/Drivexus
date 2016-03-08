@@ -27,8 +27,12 @@ $(document).on('ready page:load', function () {
     $('#new_attached').trigger('submit');                  // submit the form
   });
 
-  $('#choicecontainer').click(function () {
+  $('.choicecontainernormal').click(function () {
     $(this).toggleClass('choicecontainerclicked');
+  });
+
+  $('.choicecontainerclicked').click(function () {
+    $(this).toggleClass('choicecontainernormal');
   });
 
   // needs scantron_id, user_id, correct
