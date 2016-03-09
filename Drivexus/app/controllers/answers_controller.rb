@@ -2,9 +2,11 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
 
-    if @answer.save
+      if @answer.save
+        render js: ""
+        # TODO  handle error case
+      end
 
-    end
   end
 
   private
