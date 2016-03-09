@@ -5,5 +5,8 @@
 <%= f.label :time %>
 <%= f.datetime_local_field :time%>
 
+<%= f.label :instructor, "Instructors" %>
+<%= f.select :driver_id, @drivers %>
+
 <%= f.submit  %>
 <% end %>

@@ -4,19 +4,21 @@ class AppointmentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-
+    @users = User.all
     @appointments = @user.appointments
-
   end
 
   def new
-    @appointment = @user.appointments.build
+    @appointment = @user.appointments.new
+    @drivers = Driver.all.map do |c|
+      [c.name, c.id]
+    end
 
   end
 
+
   def edit
     @appointment = @user.appointments.find(@user_id, @appointment)
-
   end
 
 
@@ -24,42 +26,34 @@ class AppointmentsController < ApplicationController
     @appointment = @user.appointments.build(appointment_params)
 
     if @appointment.save
-      redirect_to user_appointments_path(@user,@appointment)
+      redirect_to user_appointment_path(@user,@appointment)
     else
       render :new
     end
-
   end
 
   def show
-
-
+    @driver = @appointment.driver
   end
 
   def update
-
    @appointment = Appointment.find(params[:id])
-
     if @appointment.update_attributes(appointment_params)
       redirect_to user_appointment_path(@user, @appointment)
-
     else
       render :edit
-
     end
-
   end
 
   def destroy
     @appointment.destroy
     redirect_to user_appointments_path
-
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:time, :user_id, :description)
+    params.require(:appointment).permit(:time, :user_id, :description, :driver_id)
   end
 
   def load_user
@@ -69,8 +63,5 @@ class AppointmentsController < ApplicationController
   def load_appointment
     @appointment = Appointment.find(params[:id])
   end
-
-
-
 
 end

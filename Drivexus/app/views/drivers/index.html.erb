@@ -1,0 +1,14 @@
+<h1>Instructors</h1>
+
+<table>
+  <tbody>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <strong><%= link_to "#{driver.name}",  driver_path(driver.id) %></strong><br>
+        <%= driver.bio %><br>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

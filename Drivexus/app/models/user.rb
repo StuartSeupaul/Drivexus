@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  ROLES = %i[admin student]
+  ROLES = %i[admin student driving_instructor]
 
-
-
+  def self.instructor_id(name)
+    u = User.where(name: name).first
+    u.id
+  end
 end

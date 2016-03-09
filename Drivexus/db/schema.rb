@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306184043) do
+ActiveRecord::Schema.define(version: 20160308210935) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160306184043) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "student_id"
+    t.integer  "driver_id"
   end
 
   create_table "choices", force: :cascade do |t|
@@ -36,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160306184043) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "driver_id"
+    t.string   "name"
+    t.string   "bio"
   end
 
   create_table "exams", force: :cascade do |t|
@@ -70,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160306184043) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

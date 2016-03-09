@@ -2,12 +2,18 @@ Rails.application.routes.draw do
   root :to => 'cohorts#index'
 
   resources :user_sessions
+  
+  resources :drivers do
+    resources :appointments
+  end
+
   resources :users do
     resources :appointments
   end
   resources :cohorts do
     resources :exams
   end
+
   resources :questions
 
 

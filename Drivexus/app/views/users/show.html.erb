@@ -1,6 +1,6 @@
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @user.name %><br>
+  <%= @user.email %><br>
 </p>
 
 <%= link_to 'Make an appointment', new_user_appointment_path(@user.id) %>

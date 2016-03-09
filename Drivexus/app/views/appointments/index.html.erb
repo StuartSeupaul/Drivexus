@@ -3,3 +3,16 @@
     <%= link_to appointment.description, user_appointment_path(@user, appointment) %>
   <% end %>
 <% end %>
+
+
+<% if can? :manage, Appointment %>
+  <% @users.each do |user| %>
+    <% user.appointments.each do |appointment|%>
+    <pre>
+    <%= user.email %><br>
+    <%= appointment.description %><br>
+    <%= appointment.apt_display %><br>
+    </pre>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<h1> Create new driver</h1>
+
+<%= form_for (@driver) do |f| %>
+  <%= f.label :name  %>
+  <%= f.text_field :name%><br>
+
+
+  <%= f.label :bio%>
+  <%= f.text_field :bio%><br>
+
+  <%= f.submit %>
+
+<% end %>

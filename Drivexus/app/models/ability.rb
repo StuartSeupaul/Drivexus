@@ -11,7 +11,11 @@ class Ability
     elsif user.role == "student"
       can :read, Appointment
       can :create, Appointment
-      can :update, Appointment
+      can :update, Appointment do |appointment|
+        appointment.try(:user) == user
+      end
+    elsif user.role == "driving_instructor"
+      can :manage, Appointment
     end
   end
 end
