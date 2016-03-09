@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :answers
 
   post '/scantrons' => 'scantrons#create', :as => :scantrons
+  put '/scantron' => 'scantrons#update', :as => :scantron
 
-  post 'cohorts/:id/exams/:id/mark' => 'exams#mark', :as => :mark
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 

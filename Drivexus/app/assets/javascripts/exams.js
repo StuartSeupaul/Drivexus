@@ -21,15 +21,31 @@ $(document).on('ready page:load', function () {
       if(self.attr('data-spoon') == 1) {
         $(this).toggleClass('is-correct');
         $(this).parent().find('.realanswercorrect').val(true);
-      }
-      else{
+      } else {
         $(this).toggleClass('is-incorrect');
+        // if incorrect, sees which sibling was correct and makes it green
+        $(this).parent().find('.choicecontainer').each(function () {
+          if ($(this).attr('data-spoon') == 1) {
+            $(this).toggleClass('is-correct');
+          }
+        });
       }
     });
 
-    // $('.realanswerform').each(function() {
-    //   $(this).trigger('submit');
-    // });
+    // submits each answer to be saved
+    $('.realanswerform').each(function() {
+      $(this).trigger('submit');
+    });
+
+    id = $('#scantronid').val();
+    scantronHash = {scantron_id: id};
+
+    $.ajax({
+      url: '/scantron',
+      method: 'put',
+      data: scantronHash,
+      dataType: 'script'
+    });
 
   });
 

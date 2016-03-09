@@ -30,8 +30,8 @@
 
 <% if current_user %>
   <h1 id="test-title">Test</h1>
-  <div class="questioncontainer">
-    <% @attachedquestions.each do |question| %>
+  <% @attachedquestions.each do |question| %>
+    <div class="questioncontainer">
       <!-- Hidden form for submitting an answer  -->
       <%= form_for Answer.new, :html => {:class => 'realanswerform'}, remote: true do |f| %>
         <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
@@ -47,7 +47,9 @@
         </div>
       <% end %>
 
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   <a class="action-button shadow animate blue" id="testsubmitbutton">Submit</a>
 <% end %>
+
+<span id="scantronid"><%= @scantron.id %></span>
