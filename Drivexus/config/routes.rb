@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :questions
   resources :attacheds, only: [:create]
   resources :answers
-
   resources :scantrons, only: [:create, :update]
+  resources :games, only: [:index]
+
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
