@@ -4,11 +4,11 @@
 <%= @cohort.end_display %></p>
 
 <% if @exams.any? %>
-    <% @exams.each do |exam| %>
-      <div>
-        <%= link_to exam.name, cohort_exam_path(@cohort, exam) %> Average Grade: <%= exam.average_grade %>
-      </div>
-    <% end %>
+  <% @exams.each do |exam| %>
+    <div>
+      <%= link_to exam.name, cohort_exam_path(@cohort, exam) %>
+    </div>
+  <% end %>
 <% end %>
 
 <%= link_to "Create New Exam", new_cohort_exam_path(@cohort) %>

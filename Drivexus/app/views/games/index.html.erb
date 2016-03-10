@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <style>* { padding: 0; margin: 0; }</style>
-    <script src="js/phaser.min.js"></script>
 </head>
 <body>
 <script>
@@ -12,6 +11,16 @@
     });
 
     var yourCar;
+    var timer = 500;
+    var greenLight = false;
+    var trafficLight;
+
+    function updateTimer() {
+      timer -= 1;
+      if (timer <= 0 ){
+        greenLight = true;
+      }
+    }
 
     function preload() {
       game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
@@ -19,13 +28,14 @@
       game.scale.pageAlignVertically = true;
       game.stage.backgroundColor = 'rgb(14, 57, 15)';
 
-      game.load.image('yourCar', '/app/assets/images/Car.png');
-
+      game.load.image('yourCar', '<%= image_path 'Car.png' %>');
+      game.time
     }
 
     function create() {
       game.physics.startSystem(Phaser.Physics.ARCADE);
-      yourCar = game.add.sprite((game.world.width*0.5)+25, game.world.height-5, 'yourCar');
+      // yourCar = game.add.sprite((game.world.width*0.5)+25, game.world.height-5, 'yourCar');
+      yourCar = game.add.sprite((game.world.width*0.5)+25, game.world.height-5, 'yourCar');yourCar.scale.setTo(0.2,0.2);
       yourCar.anchor.set(0.5,1);
       game.physics.enable(yourCar, Phaser.Physics.ARCADE);
 
@@ -111,8 +121,34 @@
       game.world.moveDown(drawnObject);
       drawnObject.anchor.setTo(0.5, 0.5);
 
-      
+      var drawnObject;
+      var width = 15 // example;
+      var height = 15 // example;
+      trafficLight = game.add.bitmapData(width, height);
 
+      trafficLight.ctx.beginPath();
+      trafficLight.ctx.rect(0, 0, width, height);
+      trafficLight.ctx.fillStyle = '#ff0000';
+      trafficLight.ctx.fill();
+      drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, trafficLight);
+      game.world.moveUp(drawnObject);
+      drawnObject.anchor.setTo(0.5, 0.5);
+      console.log(trafficLight);
+    }
+
+    function drawLights() {
+      var drawnObject;
+      var width = 15 // example;
+      var height = 15 // example;
+      trafficLight = game.add.bitmapData(width, height);
+
+      trafficLight.ctx.beginPath();
+      trafficLight.ctx.rect(0, 0, width, height);
+      trafficLight.ctx.fillStyle = '#33cc33';
+      trafficLight.ctx.fill();
+      drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, trafficLight);
+      game.world.moveUp(drawnObject);
+      drawnObject.anchor.setTo(0.5, 0.5);
     }
 
     function update() {
@@ -128,6 +164,13 @@
       else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
         yourCar.y += 1;
       }
+
+      if (greenLight == true){
+        // trafficLight.tint = '#33cc33';
+        drawLights();
+      }
+
+      game.time.events.loop(Phaser.Timer.SECOND, updateTimer);
     }
 
 </script>

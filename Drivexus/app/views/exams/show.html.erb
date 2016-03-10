@@ -61,7 +61,9 @@
       <p class="answeredquestioncontent"><%= question.content %></p>
       <% question.choices.each do |choice| %>
         <% queryanswer = @answers.where(question_id: question.id).first %>
-        <% queryanswer.correct && choice.correct == 1 ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
+        <% if queryanswer %>
+          <% queryanswer.correct && choice.correct == 1 ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
+        <% end %>
         <div class='<%= answered_class %>' id="answeredchoicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
           <%= choice.content %>
         </div>
