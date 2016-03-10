@@ -6,7 +6,7 @@
 <% if @exams.any? %>
     <% @exams.each do |exam| %>
       <div>
-        <%= link_to exam.name, cohort_exam_path(@cohort, exam) %>
+        <%= link_to exam.name, cohort_exam_path(@cohort, exam) %> Average Grade: <%= exam.average_grade %>
       </div>
     <% end %>
 <% end %>
