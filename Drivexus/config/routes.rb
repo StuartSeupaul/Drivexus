@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   resources :attacheds, only: [:create]
   resources :answers
 
-  post '/scantrons' => 'scantrons#create', :as => :scantrons
-  put '/scantron' => 'scantrons#update', :as => :scantron
+  resources :scantrons, only: [:create, :update]
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

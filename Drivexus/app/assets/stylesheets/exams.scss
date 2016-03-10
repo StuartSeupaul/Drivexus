@@ -114,9 +114,9 @@
 .choicecontainer {
   margin: 10px;
   padding: 20px;
-  border-radius: 100%;
-  display: inline-block;
+  display: block;
   border: 2px solid rgb(57, 17, 49);
+  width: 25%;
 
   transition-property: all;
   transition-duration: 1s;
@@ -152,4 +152,15 @@
 
 #scantronid {
   display: none;
+}
+
+.truechoicecontainer {
+  margin: 10px;
+  padding: 20px;
+  display: block;
+  border: 2px solid rgb(57, 17, 49);
+  width: 25%;
+  background-color: rgb(18, 147, 69);
+  color: white;
+  font-weight: bolder;
 }

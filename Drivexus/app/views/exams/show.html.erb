@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<% if current_user %>
+<% if current_user && @scantron.completed == false %>
   <h1 id="test-title">Test</h1>
   <% @attachedquestions.each do |question| %>
     <div class="questioncontainer">
@@ -53,3 +53,20 @@
 <% end %>
 
 <span id="scantronid"><%= @scantron.id %></span>
+
+<% if @scantron.completed == true %>
+  <% @attachedquestions.each do |question| %>
+    <div class="answeredquestioncontainer">
+      <!-- Visible div to click choices  -->
+      <p class="answeredquestioncontent"><%= question.content %></p>
+      <% question.choices.each do |choice| %>
+        <% queryanswer = @answers.where(question_id: question.id).first %>
+        <% queryanswer.correct && choice.correct == 1 ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
+        <div class='<%= answered_class %>' id="answeredchoicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
+          <%= choice.content %>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+<% end %>
