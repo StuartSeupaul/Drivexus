@@ -1,6 +1,6 @@
 class DriversController < ApplicationController
   # before_action :load_driver
-  before_action :load_appointment, only: [:show, :edit, :destroy]
+  # before_action :load_appointment, only: [:show, :edit, :destroy]
   # before_action :load_user
   skip_before_action :require_login, only: [:index, :new, :create]
 
@@ -16,7 +16,7 @@ class DriversController < ApplicationController
     @driver = Driver.new(driver_params)
 
       if @driver.save
-        redirect_to drivers_path(@driver)
+        redirect_to driver_path(@driver)
       else
         render :new
       end
@@ -41,9 +41,9 @@ class DriversController < ApplicationController
   #   @driver = Driver.find(params[:id])
   # end
 
-  def load_appointment
-    @appointment = Appointment.find(params[:id])
-  end
+  # def load_appointment
+  #   @appointment = Appointment.find(params[:id])
+  # end
 
   # def load_user
   #   @user = User.find(params[:id])

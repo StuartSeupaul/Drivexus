@@ -1,18 +1,14 @@
-<% if @appointments.any? %>
-  <% @appointments.each do |appointment| %>
-    <%= link_to appointment.description, user_appointment_path(@user, appointment) %>
-  <% end %>
-<% end %>
-
 
 <% if can? :manage, Appointment %>
-  <% @users.each do |user| %>
-    <% user.appointments.each do |appointment|%>
-    <pre>
-    <%= user.email %><br>
-    <%= appointment.description %><br>
-    <%= appointment.apt_display %><br>
-    </pre>
-    <% end %>
+  <div id="month"></div>
+    <%= calendar do |date| %>
+      <%= date.day %>
+       <% if @appointments_by_date[date] %>
+        <ul>
+         <% @appointments_by_date[date].each do |appointment| %>
+          <li><%= link_to appointment.description, user_appointment_path(@user, appointment) %></li>
+         <% end %>
+        </ul>
+      <% end %>
+      <% end %>
   <% end %>
-<% end %>

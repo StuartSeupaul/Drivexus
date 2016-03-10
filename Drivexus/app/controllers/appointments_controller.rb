@@ -1,11 +1,13 @@
 class AppointmentsController < ApplicationController
   before_action :load_user
-  before_action :load_appointment, only: [:show, :edit, :destroy]
+  # before_action :load_appointment, only: [:show, :edit, :destroy, :create]
   load_and_authorize_resource
 
   def index
     @users = User.all
     @appointments = @user.appointments
+    @appointments_by_date = @appointments.group_by(&:date)
+    @date = Date.today
   end
 
   def new
@@ -53,15 +55,15 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:time, :user_id, :description, :driver_id)
+    params.require(:appointment).permit(:date,:user_id, :description, :driver_id)
   end
 
   def load_user
     @user = User.find(params[:user_id])
   end
 
-  def load_appointment
-    @appointment = Appointment.find(params[:id])
-  end
+  # def load_appointment
+  #   @appointment = Appointment.find(params[:id])
+  # end
 
 end
