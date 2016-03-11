@@ -2,20 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.collapse{
+.collapseexam{
   display:inline-block;
 }
-.collapse + input{
+.collapseexam + input{
   display:none;
 }
-.collapse + input + *{
+.collapseexam + input + *{
   display:none;
 }
-.collapse+ input:checked + *{
+.collapseexam+ input:checked + *{
   display:block;
 }
 
-.collapse {
+.collapseexam {
   background: #77008f;
   background-image: -webkit-linear-gradient(top, #77008f, #d963f7);
   background-image: -moz-linear-gradient(top, #77008f, #d963f7);
@@ -33,7 +33,7 @@
   font-weight: bolder;
 }
 
-.collapse:hover {
+.collapseexam:hover {
   background: #e500fa;
   background-image: -webkit-linear-gradient(top, #e500fa, #e0aadc);
   background-image: -moz-linear-gradient(top, #e500fa, #e0aadc);

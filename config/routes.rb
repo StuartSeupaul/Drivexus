@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :welcome
   resources :user_sessions
-  
+
   resources :drivers do
     resources :appointments
   end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :scantrons, only: [:create, :update]
   resources :games, only: [:index]
-
+  resources :grades, only: [:create]
 
 
   get 'login' => 'user_sessions#new', :as => :login

@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready page:load', function () {
-  
+
 
   $('.question-class').click(function () {
     var questionID = parseInt($(this).attr('data-qid'));   // get value of the answer (1 = true, 0 = false) from the form
@@ -49,6 +49,7 @@ $(document).on('ready page:load', function () {
       dataType: 'script'
     });
 
+    $('#testsubmitbutton').css('display', 'none');
   });
 
 });
