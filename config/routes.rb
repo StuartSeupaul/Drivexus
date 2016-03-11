@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :appointments
+    resources :grades, only: [:create]
   end
   resources :cohorts do
     resources :exams
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
   resources :answers
   resources :scantrons, only: [:create, :update]
   resources :games, only: [:index]
-  resources :grades, only: [:create]
 
 
   get 'login' => 'user_sessions#new', :as => :login

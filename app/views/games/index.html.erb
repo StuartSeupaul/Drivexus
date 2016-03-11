@@ -18,6 +18,7 @@
     var greenLight = false;
     var trafficLight;
     var failCalled = false;
+    var trueCalled = false;
 
     function updateTimer() {
       timer -= 1;
@@ -169,6 +170,17 @@
             $('.winlose').html("You ran a red light!");
           }
           failCalled = true;
+        }
+
+        console.log(yourCar.y);
+        if (yourCar.y <= 100 && yourCar.y >= 99 && failCalled === false){
+          if (trueCalled === false){
+            $('.winlose').html("You succeeded!");
+            $('.winlose').css('background-color','green');
+            $('.winlose').css('display','block');
+
+          }
+          trueCalled = true;
         }
       }
       else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
