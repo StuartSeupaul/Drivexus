@@ -16,7 +16,7 @@ function fade() {
             if ( objectTop < windowBottom - animation_height ) {
                 $(this).html( 'fully visible' );
                 $(this).css( {
-                    transition: 'opacity 0.1s linear',
+                    transition: 'opacity 1s linear',
                     opacity: 1
                 } );
 
