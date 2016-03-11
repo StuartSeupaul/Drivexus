@@ -1,21 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "navbar";
-@import "welcome";
-@import "animate.css";
-@import "about";
-@import "appointments";
-@import "jquery-ui.css";
-@import "answers";
-@import "attacheds";
-@import "choices";
-@import "cohorts";
-@import "drivers";
-@import "exams";
-@import "games";
-@import "questions";
-@import "scantrons";
-@import "scaffolds";
 
 
 
@@ -36,3 +18,21 @@
 *= require_tree .
 *= require_self
 */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "navbar";
+@import "welcome";
+@import "animate.css";
+@import "about";
+@import "appointments";
+@import "jquery-ui.css";
+@import "answers";
+@import "attacheds";
+@import "choices";
+@import "cohorts";
+@import "drivers";
+@import "exams";
+@import "games";
+@import "questions";
+@import "scantrons";
+@import "scaffolds";

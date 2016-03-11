@@ -34,17 +34,12 @@
 //   height: 400px;
 //   width: 400px;
 // }
-.tree {
-  background-image: image("images/38637209-Seamless-pattern-with-strokes-Repeating-modern-stylish-geometric-background-Simple-abstract-monochro-Stock-Vector.jpg");
-    background-color: #faf7f8;
-}
+// .tree {
+//   background-image: image("images/38637209-Seamless-pattern-with-strokes-Repeating-modern-stylish-geometric-background-Simple-abstract-monochro-Stock-Vector.jpg");
+//     background-color: #faf7f8;
+// }
 
-.examsheet{
-  width: 100%;
-  height: auto;
-  margin-top: 40px;
-  box-shadow: 10px 10px 5px #888;
-}
+
 
 // .caa {
 // padding-right: 500px;
@@ -76,6 +71,15 @@
   margin-right: -50px;
   margin-bottom: -40px;
   box-shadow: 10px 10px 5px #888;
+
+}
+
+.jumbotron examsheet{
+  // width: 100%;
+  // height: auto;
+  // margin-top: 40px;
+  // box-shadow: 10px 10px 5px #888;
+  background-size: cover;
 }
 
 // .jumbotron2 {
