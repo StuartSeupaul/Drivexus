@@ -15,4 +15,5 @@
 //= require jquery-ui/datepicker
 //= require turbolinks
 //= require cocoon
+//= require phaser
 //= require_tree .

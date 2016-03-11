@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :questions
+  resources :attacheds, only: [:create]
+  resources :answers
+  resources :scantrons, only: [:create, :update]
+  resources :games, only: [:index]
+
 
 
   get 'login' => 'user_sessions#new', :as => :login

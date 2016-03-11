@@ -1,0 +1,2 @@
+$('.attachedquestionlist').append('<%= j (render partial: 'exams/attachedquestion', locals: {attachedquestion: @attachedquestion.question, index: @index}) %>').slideDown(500);
+$('.unusedlist').html('<%= j (render partial: 'questions/form', collection: @unusedqs, as: :question) %>')

@@ -8,11 +8,23 @@ class ExamsController < ApplicationController
 
   def new
     @exam = @cohort.exams.build
-
   end
 
   def show
+    # For creating an exam
+    @questions = Question.all
+    @attachedquestion = Attached.new
+    @attachedquestions = @exam.questions
+    @unusedquestions = @questions - @attachedquestions
 
+    # For doing an exam
+    if Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
+      @scantron = Scantron.where(user_id: current_user.id).where(exam_id: @exam.id).first
+    else
+      @scantron = Scantron.create(user_id: current_user.id, exam_id: @exam.id, completed: false)
+    end
+
+    @answers = @scantron.answers
   end
 
   def edit
