@@ -3,8 +3,13 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
 
     if @answer.save
-
+      render js: ""
+      # TODO  handle error case
     end
+  end
+
+  def update
+    
   end
 
   private

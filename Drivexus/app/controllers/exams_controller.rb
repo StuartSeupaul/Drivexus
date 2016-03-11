@@ -6,7 +6,6 @@ class ExamsController < ApplicationController
     @exams = @cohort.exams
   end
 
-
   def new
     @exam = @cohort.exams.build
   end
@@ -20,10 +19,12 @@ class ExamsController < ApplicationController
 
     # For doing an exam
     if Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
-      @scantron = Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
+      @scantron = Scantron.where(user_id: current_user.id).where(exam_id: @exam.id).first
     else
-      @scantron = Scantron.new(user_id: current_user.id, exam_id: @exam.id, completed: false)
+      @scantron = Scantron.create(user_id: current_user.id, exam_id: @exam.id, completed: false)
     end
+
+    @answers = @scantron.answers
   end
 
   def edit

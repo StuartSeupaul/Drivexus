@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   resources :questions
   resources :attacheds, only: [:create]
   resources :answers
+  resources :scantrons, only: [:create, :update]
+  resources :games, only: [:index]
 
-  post '/scantrons' => 'scantrons#create', :as => :scantrons
 
-  post 'cohorts/:id/exams/:id/mark' => 'exams#mark', :as => :mark
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
