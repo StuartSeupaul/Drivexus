@@ -1,0 +1,213 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.video {
+  margin-top: 100px;
+  margin-left: -70px;
+  margin-right: -70px;
+  background-color: #DEDEDE;
+  text-align:center;
+  box-shadow: 10px 10px 5px #888;
+
+}
+// .inner {
+//   opacity: 1.0;
+// }.h1{
+//   opacity: 100%;
+// }
+//
+// .outer {
+//   background-color: gray;
+//   opacity: 0.5;
+// }
+
+.bar {
+    background-color: gray;
+}
+.road {
+  width: 80%;
+  height: auto;
+  margin-top: 40px;
+  box-shadow: 10px 10px 5px #888;
+}
+// .img-responsive {
+//   height: 400px;
+//   width: 400px;
+// }
+.tree {
+  background-image: image("images/38637209-Seamless-pattern-with-strokes-Repeating-modern-stylish-geometric-background-Simple-abstract-monochro-Stock-Vector.jpg");
+    background-color: #faf7f8;
+}
+
+.examsheet{
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  box-shadow: 10px 10px 5px #888;
+}
+
+// .caa {
+// padding-right: 500px;
+// margin-right: 100px;
+// }
+.caa{
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  margin-left: 22px;
+  box-shadow: 10px 10px 5px #888;
+
+}
+.outlinetext {
+
+      color: white;
+      text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+.jumbotron {
+  background-image: url("CarPlayClean.jpg");
+  background-size: cover;
+  height: 550px;
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-bottom: -40px;
+  box-shadow: 10px 10px 5px #888;
+}
+
+// .jumbotron2 {
+//
+//   background-image: url("test.jpg");
+//   // background-size: cover;
+//   background-repeat: no-repeat;
+//   height: 550px;
+//   margin-left: -50px;
+//   margin-right: -50px;
+//   margin-bottom: -40px;
+//   margin-top: 100px;
+// }
+//
+// .jumbotron3 {
+//   background-image: url("test2.jpg");
+//   // background-size: cover;
+//   background-repeat: no-repeat;
+//   height: 550px;
+//   margin-left: -50px;
+//   margin-right: -50px;
+//   margin-bottom: -40px;
+//   margin-top: 100px;
+//   float: right;
+//   padding-right: 300px;
+
+// }
+.jumbotron h1 {
+
+  color: white;
+  text-shadow: black;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+//  h4{
+// padding-left: 300px;
+// // margin-bottom: 1000px;
+//
+// }
+//  h5{
+//   padding-left: 300px;
+//
+// }
+
+
+.red{
+  width: 5%;
+  height: auto;
+  margin-top: 190px;
+  margin-left: 175px;
+  opacity: .6;
+}
+.purple{
+  width: 5%;
+  height: auto;
+  margin-top: 190px;
+  opacity: .6;
+}
+.yellow{
+  width: 5%;
+  height: auto;
+  margin-top: 190px;
+  opacity: .6;
+
+}
+.blue{
+  width: 5%;
+  height: auto;
+  margin-top: 190px;
+  opacity: .6;
+
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+#logo:hover {
+  color: white;
+  text-decoration: none;
+
+}
+
+// .cone {
+//   margin-top: 80px;
+//   margin-bottom: 40px;
+//
+//
+// }
+.center {
+  text-align:center;
+  // color: gray;
+}
+.carousel {
+  // margin-top: -100px;
+  // margin-bottom: 100px;
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-top: 100px;
+  margin-bottom: 250px;
+  padding-top: -300px;
+  height: 500px;
+  width: auto;
+
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid black;
+
+}
+footer a:hover {
+  color: black;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}

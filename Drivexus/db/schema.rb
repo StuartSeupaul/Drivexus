@@ -11,6 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20160311023058) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "scantron_id"
+    t.integer  "question_id"
+    t.boolean  "correct"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,13 +32,6 @@
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-
-  create_table "answers", force: :cascade do |t|
-    t.integer  "scantron_id"
-    t.integer  "question_id"
-    t.boolean  "correct"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "attacheds", force: :cascade do |t|
@@ -37,7 +39,6 @@
     t.integer  "exam_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
->>>>>>> master
   end
 
   create_table "choices", force: :cascade do |t|
