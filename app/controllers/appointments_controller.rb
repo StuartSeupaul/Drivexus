@@ -35,7 +35,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @drivers = Driver.all 
+    @drivers = Driver.all
     @drivers.each do |d|
       [d.name]
     end
