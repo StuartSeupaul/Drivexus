@@ -3,6 +3,7 @@ class DriversController < ApplicationController
   # before_action :load_appointment, only: [:show, :edit, :destroy]
   # before_action :load_user
   skip_before_action :require_login, only: [:index, :new, :create]
+  load_and_authorize_resource
 
   def index
     @drivers = Driver.all
