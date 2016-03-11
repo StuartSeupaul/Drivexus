@@ -5,6 +5,9 @@
     <style>* { padding: 0; margin: 0; }</style>
 </head>
 <body>
+
+<div class="winlose"></div>
+
 <script>
     var game = new Phaser.Game(480, 320, Phaser.AUTO, null, {
       preload: preload, create: create, update: update
@@ -14,6 +17,7 @@
     var timer = 500;
     var greenLight = false;
     var trafficLight;
+    var failCalled = false;
 
     function updateTimer() {
       timer -= 1;
@@ -133,7 +137,6 @@
       drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, trafficLight);
       game.world.moveUp(drawnObject);
       drawnObject.anchor.setTo(0.5, 0.5);
-      console.log(trafficLight);
     }
 
     function drawLights() {
@@ -160,6 +163,13 @@
       }
       else if (game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
         yourCar.y -= 1;
+        if (yourCar.y <= 245 && yourCar.y >= 244 && greenLight === false){
+          if (failCalled === false){
+            $('.winlose').css('display','block');
+            $('.winlose').html("You ran a red light!");
+          }
+          failCalled = true;
+        }
       }
       else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
         yourCar.y += 1;
