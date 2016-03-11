@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # for authentication
 gem 'sorcery'
+gem 'geocoder'
 
 gem 'cancancan', '~> 1.10'
 # for nesting forms

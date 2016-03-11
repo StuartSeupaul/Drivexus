@@ -1,7 +1,31 @@
   <h1><%= @driver.name %></h1>
 
+  <div id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+    </div>
 
+  <%= calendar @date do |date| %>
+    <%= date.day %>
 
-     <%= calendar do |date| %>
-      
+    <% if @appointments_by_date[date] %>
+  <ul>
+    <% @appointments_by_date[date].each do |appointment| %>
+    <%= link_to appointment.user.name, user_appointment_path(appointment.user,appointment) %>
+
     <% end %>
+  </ul>
+  <% end %>
+  <% end %>
+
+
+
+<% @driver.appointments.each do |appointment|%>
+<pre>
+<%= appointment.user.name %>
+<%= appointment.description %><br>
+<%= appointment.date %><br>
+<%= appointment.apt_time %>
+</pre>
+<% end %>

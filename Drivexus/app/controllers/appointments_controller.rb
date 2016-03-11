@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
     @users = User.all
     @appointments = @user.appointments
     @appointments_by_date = @appointments.group_by(&:date)
-    @date = Date.today
+    @date = params[:date] ? Date.parse(params[:date]) :Date.today
   end
 
   def new
@@ -55,7 +55,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date,:user_id, :description, :driver_id)
+    params.require(:appointment).permit(:date,:user_id, :description, :driver_id, :time)
   end
 
   def load_user

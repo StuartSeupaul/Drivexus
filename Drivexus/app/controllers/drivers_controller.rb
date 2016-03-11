@@ -28,6 +28,10 @@ class DriversController < ApplicationController
 
   def show
     @driver = Driver.find(params[:id])
+    @appointments = @driver.appointments
+    @appointments_by_date = @appointments.group_by(&:date)
+    @date = params[:date] ? Date.parse(params[:date]) :Date.today
+
   end
 
 

@@ -1,7 +1,9 @@
 class Appointment < ActiveRecord::Base
-  belongs_to :student, class_name: "User", foreign_key: "student_id"
+  belongs_to :user
   belongs_to :driver
 
-  
+  def apt_time
+    apt_time = time.strftime("%I:%M %p")
+  end
 
 end
