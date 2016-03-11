@@ -1,9 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "animate.css";
-@import "welcome";
 @import "navbar";
+@import "welcome";
+@import "animate.css";
 @import "about";
+@import "appointments";
+@import "jquery-ui.css";
+@import "answers";
+@import "attacheds";
+@import "choices";
+@import "cohorts";
+@import "drivers";
+@import "exams";
+@import "games";
+@import "questions";
+@import "scantrons";
+@import "scaffolds";
+
+
+
+
 /*
 * This is a manifest file that'll be compiled into application.css, which will include all the files
 * listed below.
