@@ -35,11 +35,10 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @nearby_driver = @driver.nearbys
-    @nearby_drivers.each do |d|
+    @drivers = Driver.all 
+    @drivers.each do |d|
       [d.name]
     end
-    @drivers = @appointment.nearby_drivers(10, unit: :km)
 
   end
 
