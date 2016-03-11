@@ -25,6 +25,7 @@ class ExamsController < ApplicationController
     end
 
     @answers = @scantron.answers
+    
   end
 
   def edit
