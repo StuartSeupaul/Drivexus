@@ -7,18 +7,19 @@
   margin-right: -70px;
   background-color: #DEDEDE;
   text-align:center;
+  box-shadow: 10px 10px 5px #888;
 
 }
-.inner {
-  opacity: 1.0;
-}.h1{
-  opacity: 100%;
-}
-
-.outer {
-  background-color: gray;
-  opacity: 0.5;
-}
+// .inner {
+//   opacity: 1.0;
+// }.h1{
+//   opacity: 100%;
+// }
+//
+// .outer {
+//   background-color: gray;
+//   opacity: 0.5;
+// }
 
 .bar {
     background-color: gray;
@@ -27,6 +28,7 @@
   width: 80%;
   height: auto;
   margin-top: 40px;
+  box-shadow: 10px 10px 5px #888;
 }
 // .img-responsive {
 //   height: 400px;
@@ -34,12 +36,14 @@
 // }
 .tree {
   background-image: image("images/38637209-Seamless-pattern-with-strokes-Repeating-modern-stylish-geometric-background-Simple-abstract-monochro-Stock-Vector.jpg");
+    background-color: #faf7f8;
 }
 
 .examsheet{
   width: 100%;
   height: auto;
   margin-top: 40px;
+  box-shadow: 10px 10px 5px #888;
 }
 
 // .caa {
@@ -51,6 +55,7 @@
   height: auto;
   margin-top: 40px;
   margin-left: 22px;
+  box-shadow: 10px 10px 5px #888;
 
 }
 .outlinetext {
@@ -70,6 +75,7 @@
   margin-left: -50px;
   margin-right: -50px;
   margin-bottom: -40px;
+  box-shadow: 10px 10px 5px #888;
 }
 
 // .jumbotron2 {
@@ -179,13 +185,14 @@
   padding-top: -300px;
   height: 500px;
   width: auto;
+
 }
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid black;
-  color: green;
+
 }
 footer a:hover {
   color: black;
