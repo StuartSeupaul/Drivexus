@@ -3,7 +3,6 @@
 
 $(document).on('ready page:load', function () {
 
-
   $('.question-class').click(function () {
     var questionID = parseInt($(this).attr('data-qid'));   // get value of the answer (1 = true, 0 = false) from the form
     $('#attached_question_id').val(questionID);            // put the value in the corresponding field
@@ -17,10 +16,14 @@ $(document).on('ready page:load', function () {
 
   // needs scantron_id, user_id, correct
   $('#testsubmitbutton').click(function () {
-
+    gradeForTest = 0.0;
+    totalQuestions = 0;
+    correctAnswers = 0;
     $('.is-clicked').each(function() {
+      totalQuestions++;
       self = $(this);
       if(self.attr('data-spoon') == 1) {
+        correctAnswers++;
         $(this).toggleClass('is-correct');
         $(this).parent().find('.realanswercorrect').val(true);
       } else {
@@ -33,6 +36,7 @@ $(document).on('ready page:load', function () {
         });
       }
     });
+    gradeForTest = correctAnswers/totalQuestions;
 
     // submits each answer to be saved
     $('.realanswerform').each(function() {
@@ -45,14 +49,11 @@ $(document).on('ready page:load', function () {
     $.ajax({
       url: urlfull,
       method: 'put',
-      data: {scantron:{completed:true}},
+      data: {scantron:{result: gradeForTest}},
       dataType: 'script'
     });
 
-    
-
     $('#testsubmitbutton').css('display', 'none');
-
 
   });
 

@@ -21,11 +21,11 @@ class ExamsController < ApplicationController
     if Scantron.where(user_id: current_user).where(exam_id: @exam.id).first
       @scantron = Scantron.where(user_id: current_user.id).where(exam_id: @exam.id).first
     else
-      @scantron = Scantron.create(user_id: current_user.id, exam_id: @exam.id, completed: false)
+      @scantron = Scantron.create(user_id: current_user.id, exam_id: @exam.id)
     end
 
     @answers = @scantron.answers
-    
+
   end
 
   def edit

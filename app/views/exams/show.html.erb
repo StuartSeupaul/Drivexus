@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<% if current_user && @scantron.completed == false %>
+<% if current_user && @scantron.result === nil %>
   <h1 id="test-title">Test</h1>
   <% @attachedquestions.each do |question| %>
     <div class="questioncontainer">
@@ -54,7 +54,7 @@
 
 <span id="scantronid"><%= @scantron.id %></span>
 
-<% if @scantron.completed == true %>
+<% if @scantron.result %>
   <% @attachedquestions.each do |question| %>
     <div class="answeredquestioncontainer">
       <!-- Visible div to click choices  -->

@@ -4,7 +4,20 @@
 </p>
 
 <%= link_to 'Make an appointment', new_user_appointment_path(@user.id) %>
-
+<%= link_to 'View cohorts', cohorts_path %>
+<% if @user.scantrons.any? %>
+  <h4>Exam Results</h4>
+  <% @user.scantrons.each do |scantron| %>
+    <ul>
+      <li>
+        <div>
+          <%= scantron.exam.name %>
+        </div>
+        <%= scantron.convert_to_percent %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

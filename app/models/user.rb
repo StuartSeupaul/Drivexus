@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :appointments
-  has_many :grades
+  has_many :scantrons
   has_many :drivers, through: :appointments
   authenticates_with_sorcery!
 
