@@ -8,14 +8,18 @@
 <% if @user.scantrons.any? %>
   <h4>Exam Results</h4>
   <% @user.scantrons.each do |scantron| %>
-    <ul>
-      <li>
-        <div>
-          <%= scantron.exam.name %>
-        </div>
-        <%= scantron.convert_to_percent %>
-      </li>
-    </ul>
+    <% if scantron.result != nil  %>
+      <ul>
+        <li>
+          <div>
+            <%= scantron.exam.name %>
+          </div>
+            <% examNumber = Exam.where(id: scantron.exam_id).first %>
+            <% cohortNumber = Cohort.where(id: examNumber.cohort_id).first %>
+            <%= link_to scantron.convert_to_percent, cohort_exam_path(cohortNumber, examNumber) %>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
 <% end %>
 

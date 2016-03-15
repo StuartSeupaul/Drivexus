@@ -42,7 +42,8 @@
       <!-- Visible div to click choices  -->
       <p class="questioncontent"><%= question.content %></p>
       <% question.choices.each do |choice| %>
-        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
+        <% choice.correct ? choicelisting = 1 : choicelisting = 0 %>
+        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choicelisting%>" data-qnum ="<%= question.id %>" >
           <%= choice.content %>
         </div>
       <% end %>

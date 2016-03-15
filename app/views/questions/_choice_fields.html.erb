@@ -5,8 +5,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :correct %>
-    <%= f.number_field :correct %>
+    <%= f.radio_button :correct, true %>
+    <%= label :correct, 'Correct' %>
+    <%= f.radio_button :correct, false %>
+    <%= label :correct, 'Incorrect' %>
   </div>
 
   <%= link_to_remove_association "Remove choice", f %>
