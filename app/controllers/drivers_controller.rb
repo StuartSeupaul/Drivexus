@@ -7,6 +7,22 @@ class DriversController < ApplicationController
 
   def index
     @drivers = Driver.all
+    if params[:address]
+    @nearby_drivers = Driver.near(params[:address], 1000, unit: :km)
+      respond_to do |format|
+        # format.html
+        format.js
+      end
+    elsif
+      params[:latitude] && params[:longitude]
+    @nearby_drivers = Driver.near([params[:latitude], params[:longitude]], 1000, unit: :km)
+      respond_to do |format|
+        # format.html
+        format.js
+      end
+    else
+      @drivers = Driver.all
+    end
   end
 
   def new
@@ -35,11 +51,23 @@ class DriversController < ApplicationController
 
   end
 
+  def edit
+    @driver = Driver.find(params[:id])
+  end
+
+  def update
+    if @driver.update_attributes(driver_params)
+      redirect_to driver_path(@driver)
+    else
+      render :edit
+    end
+  end
+
 
   private
 
   def driver_params
-    params.require(:driver).permit(:id, :name, :bio)
+    params.require(:driver).permit(:id, :name, :bio, :address)
   end
 
   # def load_driver

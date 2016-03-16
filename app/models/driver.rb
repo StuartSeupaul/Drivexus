@@ -3,5 +3,5 @@ class Driver < ActiveRecord::Base
   has_many :users, through: :appointments
 
   geocoded_by :address
-  after_validation :geocode 
+  after_validation :geocode
 end

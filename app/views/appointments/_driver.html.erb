@@ -1,0 +1,11 @@
+<div class="show-drivers">
+  <h2>Nearby drivers</h2>
+    <ol>
+      <% if @nearby_drivers.present? %>
+        <% @nearby_drivers.each do |driver| %>
+        <%= driver.name  %>
+        <%= driver.bio %>
+        <% end %>
+      <%end %>
+    </ol>
+</div>
