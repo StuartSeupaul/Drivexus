@@ -25,7 +25,7 @@ class ExamsController < ApplicationController
     end
 
     @answers = @scantron.answers
-
+    @categories = Category.all
   end
 
   def edit

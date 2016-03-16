@@ -14,8 +14,8 @@
           <div>
             <%= scantron.exam.name %>
           </div>
-            <% examNumber = Exam.where(id: scantron.exam_id).first %>
-            <% cohortNumber = Cohort.where(id: examNumber.cohort_id).first %>
+            <% examNumber = Exam.get_exam_by_scantron(scantron) %>
+            <% cohortNumber = Cohort.get_cohort_by_exam(examNumber) %>
             <%= link_to scantron.convert_to_percent, cohort_exam_path(cohortNumber, examNumber) %>
         </li>
       </ul>

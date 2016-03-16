@@ -10,4 +10,8 @@ class Cohort < ActiveRecord::Base
     mytime = self.start_date
     mytime.strftime("%B %-d, %Y")
   end
+
+  def self.get_cohort_by_exam(exam)
+    Cohort.where(id: exam.cohort_id).first
+  end
 end

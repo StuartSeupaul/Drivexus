@@ -2,6 +2,10 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready page:load', function () {
+  $('.showquestions').click(function () {
+    $(this).toggleClass('is-showing');
+    $('.list-of-questions').toggleClass('list-showing');
+  });
 
   $('.question-class').click(function () {
     var questionID = parseInt($(this).attr('data-qid'));   // get value of the answer (1 = true, 0 = false) from the form

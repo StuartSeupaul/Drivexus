@@ -15,17 +15,26 @@
   <%= f.submit %>
 <% end %>
 
-<br>
-<label class="collapseexam" for="_1">List Of Questions Available To Add</label>
-<input id="_1" type="checkbox">
+<div class="showquestions">
+  <p>SHOW QUESTIONS</p>
+</div>
 
 <div class="list-of-questions">
   <div>
     <%= link_to "Add New Question", new_question_path %>
   </div>
-  <div class="unusedlist">
-    <%= render partial: 'questions/form', collection: @unusedquestions, as: :question%>
-  </div>
+
+  <% @categories.each do |category| %>
+    <% if category.questions.any? %>
+      <div class="examcategories">
+        <% category_questions = [] %>
+        <% category.questions.each do |question| %>
+          <% @unusedquestions.include?(question) ? category_questions << question : question %>
+        <% end %>
+        <%= render partial: 'questions/form', collection: category_questions, as: :question%>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
 <% if current_user && @scantron.result === nil %>
