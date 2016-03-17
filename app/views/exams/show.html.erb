@@ -27,6 +27,7 @@
   <% @categories.each do |category| %>
     <% if category.questions.any? %>
       <div class="examcategories">
+        <h3><%= category.name %></h3>
         <% category_questions = [] %>
         <% category.questions.each do |question| %>
           <% @unusedquestions.include?(question) ? category_questions << question : question %>

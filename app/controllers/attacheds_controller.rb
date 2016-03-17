@@ -11,8 +11,8 @@ class AttachedsController < ApplicationController
         @attachedqs = @ex.questions
         @index = @attachedqs.count - 1
         @unusedqs = @qs - @attachedqs
-        @current_question = Question.where(question_id: @attachedquestion.question_id)
-        @category = Category.where(category_id: @current_question.category_id)
+        @current_question = Question.where(id: @attachedquestion.question_id).first
+        @category = Category.where(id: @current_question.category_id).first
         @category.questions.each do |question|
           @attachedqs.include?(question) ? @category_questions << question : @category_questions
         end

@@ -14,7 +14,6 @@ $(document).on('ready page:load', function () {
   });
 
   $('.choicecontainer').click(function () {
-    // console.log($(this).closest('#questioncontent');
     $(this).toggleClass('is-clicked');
   });
 
