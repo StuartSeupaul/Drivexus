@@ -3,8 +3,11 @@
     <ol>
       <% if @nearby_drivers.present? %>
         <% @nearby_drivers.each do |driver| %>
-        <%= driver.name  %>
-        <%= driver.bio %>
+        <div class= "show-appoinment"></div>
+        <%= link_to "#{driver.name}",  driver_path(driver.id)  %><br>
+        <%= driver.bio %><br>
+       </div>
+    
         <% end %>
       <%end %>
     </ol>

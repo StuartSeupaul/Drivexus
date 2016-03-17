@@ -10,32 +10,11 @@ class AppointmentsController < ApplicationController
     @appointments_by_date = @appointments.group_by(&:date)
     @date = params[:date] ? Date.parse(params[:date]) :Date.today
 
-    if params[:address]
-    @nearby_drivers = Driver.all.near(params[:address], 10, unit: :km)
-      respond_to do |format|
-        # format.html
-        # format.js
-      end
-    elsif params[:latitude] && params[:longitude]
-    @nearby_drivers = Driver.near([params[:latitude], params[:longitude]], 10, unit: :km)
-    respond_to do |format|
-      # format.html
-      format.js
-    end
-    else
-      @drivers = Driver.all
-    end
-
-
   end
 
   def new
-    @appointment = @user.appointments.new
+    @appointment = @user.appointments.build
   end
-
-#
-#
-
 
 
   def edit

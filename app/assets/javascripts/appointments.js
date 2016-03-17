@@ -3,12 +3,16 @@
 
 $(document).on("ready page:load", function(){
   $(function() {
-    $('#appointment_date').datepicker({dateFormat: "yy-mm-dd"})
+    $('#date_').datepicker({dateFormat: "yy-mm-dd"})
 
   });
-console.log("experiement")
+
+
   $('#nearby-drivers').on('click', function(e) {
     e.preventDefault();
+
+    moveValue();
+
 
     if("geolocation" in navigator)  {
       navigator.geolocation.getCurrentPosition(itWorked, itDidNotWork);
@@ -30,6 +34,23 @@ function itWorked(position){
 
 function itDidNotWork(error){
   console.log(error.message);
+}
+
+$('#drivers-by-address').on('click', function(e) {
+
+  moveValue();
+});
+
+
+function moveValue() {
+  $('#appointment_date').val($('#date_').val());
+
+  $('#appointment_start_time_4i').val($('#start_time__4i').val());
+
+  $('#appointment_end_time_4i').val($('#end_time__4i').val());
+
+  $('#appointment_address').val($('#address').val());
+
 }
 
 })

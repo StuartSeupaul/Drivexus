@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311190045) do
+ActiveRecord::Schema.define(version: 20160316172539) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "scantron_id"
@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.datetime "updated_at",  null: false
     t.integer  "driver_id"
     t.date     "date"
-    t.time     "time"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   create_table "attacheds", force: :cascade do |t|

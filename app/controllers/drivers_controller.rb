@@ -8,14 +8,14 @@ class DriversController < ApplicationController
   def index
     @drivers = Driver.all
     if params[:address]
-    @nearby_drivers = Driver.near(params[:address], 1000, unit: :km)
-      respond_to do |format|
-        # format.html
+    @nearby_drivers = Driver.near(params[:address], 10, unit: :km)
+        respond_to do |format|
         format.js
-      end
+        end
+
     elsif
       params[:latitude] && params[:longitude]
-    @nearby_drivers = Driver.near([params[:latitude], params[:longitude]], 1000, unit: :km)
+    @nearby_drivers = Driver.near([params[:latitude], params[:longitude]], 10, unit: :km)
       respond_to do |format|
         # format.html
         format.js
