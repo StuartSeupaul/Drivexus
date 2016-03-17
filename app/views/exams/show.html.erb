@@ -28,11 +28,9 @@
     <% if category.questions.any? %>
       <div class="examcategories">
         <h3><%= category.name %></h3>
-        <% category_questions = [] %>
-        <% category.questions.each do |question| %>
-          <% @unusedquestions.include?(question) ? category_questions << question : question %>
-        <% end %>
-        <%= render partial: 'questions/form', collection: category_questions, as: :question%>
+          <% ids_of_unused_questions = @unusedquestions.map(&:id) %>
+          <% unused_questions_in_category = category.questions.where(id: ids_of_unused_questions) %>
+        <%= render partial: 'questions/form', collection: unused_questions_in_category, as: :question%>
       </div>
     <% end %>
   <% end %>

@@ -13,9 +13,7 @@ class AttachedsController < ApplicationController
         @unusedqs = @qs - @attachedqs
         @current_question = Question.where(id: @attachedquestion.question_id).first
         @category = Category.where(id: @current_question.category_id).first
-        @category.questions.each do |question|
-          @attachedqs.include?(question) ? @category_questions << question : @category_questions
-        end
+
         format.js
       end
     end
