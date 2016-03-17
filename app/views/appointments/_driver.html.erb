@@ -3,11 +3,11 @@
     <ol>
       <% if @nearby_drivers.present? %>
         <% @nearby_drivers.each do |driver| %>
-        <div class= "show-appoinment"></div>
-        <%= link_to "#{driver.name}",  driver_path(driver.id)  %><br>
+        <div class= "show-appointment" data-collect = "<%= driver.id %>" >
+        <%= driver.name  %><br>
         <%= driver.bio %><br>
        </div>
-    
+
         <% end %>
       <%end %>
     </ol>

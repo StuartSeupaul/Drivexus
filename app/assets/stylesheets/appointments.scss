@@ -58,3 +58,18 @@ li {
   font-size: 11px;
   text-align: center;
 }
+
+.driver_name{
+  // display: none;
+}
+
+.show-appointment{
+  border: 1px solid black;
+  display: inline-block;
+  padding: 15px;
+
+}
+
+.show-appointment:hover {
+  background-color: #E3F4FA
+}

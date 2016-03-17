@@ -27,7 +27,15 @@ function itWorked(position){
     url: '/drivers',
     method: 'get',
     data: {latitude: lat, longitude: lon},
-    dataType: 'script'
+    dataType: 'script',
+    complete: function () {
+
+      $('.show-appointment').click(function(){
+        console.log("experiment")
+        $('#appointment_driver_id').val(parseInt($(this).attr('data-collect'))) 
+
+      });
+    }
   })
 
 }
@@ -36,10 +44,15 @@ function itDidNotWork(error){
   console.log(error.message);
 }
 
-$('#drivers-by-address').on('click', function(e) {
+
+$('#drivers-by-address').on('click', function() {
 
   moveValue();
 });
+
+
+
+
 
 
 function moveValue() {
@@ -50,6 +63,7 @@ function moveValue() {
   $('#appointment_end_time_4i').val($('#end_time__4i').val());
 
   $('#appointment_address').val($('#address').val());
+
 
 }
 

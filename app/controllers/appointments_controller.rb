@@ -41,7 +41,7 @@ class AppointmentsController < ApplicationController
 
     @drivers = Driver.all
 
-    @nearby_drivers.each do |d|
+    @drivers.each do |d|
       [d.name]
     end
 
@@ -64,7 +64,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date,:user_id, :description, :driver_id, :time, :address)
+    params.require(:appointment).permit(:date,:user_id, :description, :driver_id, :start_time, :end_time, :address)
   end
 
   def load_user
