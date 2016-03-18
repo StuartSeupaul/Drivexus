@@ -7,11 +7,11 @@ class Appointment < ActiveRecord::Base
   end
 
   def aend_time
-    aend_time = start_time.strftime("%I:%M %p")
+    aend_time = end_time.strftime("%I:%M %p")
   end
 
   def available_drivers
-    already_taken = Appointment.where(:driver_id => self.driver_id, :start_time => self.start_time, :end_time => self.end_time)  
+    already_taken = Appointment.where(:driver_id => self.driver_id, :start_time => self.start_time, :end_time => self.end_time)
   end
 
 

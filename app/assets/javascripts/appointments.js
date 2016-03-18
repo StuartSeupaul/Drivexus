@@ -19,20 +19,40 @@ $(document).on("ready page:load", function(){
     }
   })
 
-function itWorked(position){
-  var lat = position.coords.latitude;
-  var lon = position.coords.longitude;
+  $('#drivers-by-address').on('click', function(e){
+    e.preventDefault();
+    itWorked();
+  })
+
+function itWorked(position) {
+  var data;
+
+  if (position) {
+    data = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    };
+  } else {
+    data = {
+      date_: $('#date_').val(),
+      start_time__4i: $('#start_time__4i').val(),
+      start_time__5i: $('#start_time__5i').val(),
+      end_time__4i: $('#end_time__4i').val(),
+      end_time__5i: $('#end_time__5i').val(),
+      address: $('#address').val(),
+    };
+  }
 
   $.ajax({
     url: '/drivers',
     method: 'get',
-    data: {latitude: lat, longitude: lon},
+    data: data,
     dataType: 'script',
     complete: function () {
 
       $('.show-appointment').click(function(){
         console.log("experiment")
-        $('#appointment_driver_id').val(parseInt($(this).attr('data-collect'))) 
+        $('#appointment_driver_id').val(parseInt($(this).attr('data-collect')))
 
       });
     }
@@ -49,8 +69,6 @@ $('#drivers-by-address').on('click', function() {
 
   moveValue();
 });
-
-
 
 
 

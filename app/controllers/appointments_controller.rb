@@ -4,8 +4,6 @@ class AppointmentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-
-    @users = User.all
     @appointments = @user.appointments
     @appointments_by_date = @appointments.group_by(&:date)
     @date = params[:date] ? Date.parse(params[:date]) :Date.today
