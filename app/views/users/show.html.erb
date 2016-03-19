@@ -1,13 +1,20 @@
-<p>
+<h1>
   <%= @user.name %><br>
-  <%= @user.email %><br>
-</p>
-
+</h1>
+<br>
+<br>
 <div class="user-link-images">
-  <%= link_to image_tag("calendar.svg", width: 100, height: 100), new_user_appointment_path(@user.id) %>
-  <%= link_to image_tag("Test-paper-icon.png", width: 100, height: 100), cohorts_path %>
+  <div class="user-book-appointment">
+    <h4>BOOK AN APPOINTMENT</h4>
+    <%= link_to image_tag("calendar.svg", width: 100, height: 100), new_user_appointment_path(@user.id) %>
+  </div>
+  <br>
+  <div class="user-do-test">
+    <h4>TESTS</h4>
+    <%= link_to image_tag("Test-paper-icon.png", width: 100, height: 100), cohorts_path %>
+  </div>
 </div>
-
+<br>
 <div class="user-scantron-results">
   <% if @user.scantrons.any? %>
     <h4>Exam Results</h4>
