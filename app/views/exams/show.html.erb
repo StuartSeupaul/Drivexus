@@ -44,6 +44,7 @@
       <%= form_for Answer.new, :html => {:class => 'realanswerform'}, remote: true do |f| %>
         <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
         <%= f.hidden_field(:question_id, :value => question.id) %>
+        <%= f.hidden_field(:choice_id, :class => 'realanswerchoice') %>
         <%= f.hidden_field(:correct, :value => false, :class => 'realanswercorrect', :id => question.id) %>
         <%= f.submit :class => 'realanswersubmit' %>
       <% end %>
@@ -51,7 +52,7 @@
       <p class="questioncontent"><%= question.content %></p>
       <% question.choices.each do |choice| %>
         <% choice.correct ? choicelisting = 1 : choicelisting = 0 %>
-        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choicelisting%>" data-qnum ="<%= question.id %>" >
+        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choicelisting%>" data-qnum ="<%= question.id %>" data-cnum="<%= choice.id %>">
           <%= choice.content %>
         </div>
       <% end %>
@@ -71,7 +72,7 @@
       <% question.choices.each do |choice| %>
         <% queryanswer = @answers.where(question_id: question.id).first %>
         <% if queryanswer %>
-          <% queryanswer.correct && choice.correct == 1 ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
+          <% queryanswer.correct && choice.correct ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
         <% end %>
         <div class='<%= answered_class %>' id="answeredchoicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
           <%= choice.content %>
@@ -79,5 +80,11 @@
       <% end %>
 
     </div>
+  <% end %>
+<% end %>
+
+<% if @answers %>
+  <% @answers.each do |answer| %>
+
   <% end %>
 <% end %>

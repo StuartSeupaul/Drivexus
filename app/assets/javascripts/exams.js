@@ -25,6 +25,9 @@ $(document).on('ready page:load', function () {
     $('.is-clicked').each(function() {
       totalQuestions++;
       self = $(this);
+
+      // fills in the choice_id field for answer
+      self.parent().find('.realanswerchoice').val(self.attr('data-cnum'));
       if(self.attr('data-spoon') == 1) {
         correctAnswers++;
         $(this).toggleClass('is-correct');
@@ -49,6 +52,7 @@ $(document).on('ready page:load', function () {
     scanid = parseInt($('#scantronid').html());
     urlfull = '/scantrons/' + scanid
 
+    // updates the grade field on the scantron
     $.ajax({
       url: urlfull,
       method: 'put',
@@ -56,6 +60,7 @@ $(document).on('ready page:load', function () {
       dataType: 'script'
     });
 
+    // hides the submit button once it has been clicked
     $('#testsubmitbutton').css('display', 'none');
 
   });

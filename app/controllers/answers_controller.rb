@@ -9,11 +9,11 @@ class AnswersController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private
   def answer_params
-    params.require(:answer).permit(:scantron_id, :question_id, :correct)
+    params.require(:answer).permit(:scantron_id, :question_id, :correct, :choice_id)
   end
 end

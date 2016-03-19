@@ -24,7 +24,7 @@ class ExamsController < ApplicationController
       @scantron = Scantron.create(user_id: current_user.id, exam_id: @exam.id)
     end
 
-    @answers = @scantron.answers
+    @answers = @scantron.answers if @scantron.result
     @categories = Category.all
   end
 
