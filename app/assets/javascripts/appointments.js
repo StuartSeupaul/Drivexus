@@ -10,13 +10,14 @@ $(document).on("ready page:load", function(){
 
   $('#nearby-drivers').on('click', function(e) {
     e.preventDefault();
-
     moveValue();
 
 
     if("geolocation" in navigator)  {
       navigator.geolocation.getCurrentPosition(itWorked, itDidNotWork);
     }
+
+
   })
 
   $('#drivers-by-address').on('click', function(e){
@@ -48,11 +49,17 @@ function itWorked(position) {
     method: 'get',
     data: data,
     dataType: 'script',
-    complete: function () {
+    complete: function (data) {
+      $('show-drivers').val(){
+
+      $('#map').val(parseInt($this).attr('data-latitude', $('#drivers-address-latitude'), 'data-longitude', $('#drivers-address-longitude')))
+    }
 
       $('.show-appointment').click(function(){
-        console.log("experiment")
         $('#appointment_driver_id').val(parseInt($(this).attr('data-collect')))
+
+
+
 
       });
     }
@@ -84,5 +91,6 @@ function moveValue() {
 
 
 }
+
 
 })

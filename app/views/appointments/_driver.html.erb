@@ -6,10 +6,17 @@
         <div class= "show-appointment" data-collect = "<%= driver.id %>" >
         <%= driver.name  %><br>
         <%= driver.bio %><br>
+        <div class="drivers-address-latitude">
+          <%= driver.latitude %>
+        </div>
 
-       </div>
-
+        <div class="drivers-address-longitude">
+          <%= driver.longitude %>
+        </div>
+      </div>
         <% end %>
       <%end %>
+
+
     </ol>
 </div>

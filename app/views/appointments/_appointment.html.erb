@@ -1,28 +1,32 @@
 <p>
-<%= form_for([@user, @appointment]) do |f| %>
 
-  <%= f.label :date %>
-  <%= f.text_field :date %>
+  <%= form_for([@user, @appointment]) do |f| %>
 
-  <%= f.label :start_time, "From" %>
-  <%= f.time_select :start_time, ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20 %>
+    <div class="appointment-form">
 
-  <%= f.label :end_time, "To" %>
-  <%= f.time_select :end_time, ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20  %>
+    <%= f.label :date %>
+    <%= f.text_field :date %>
 
-  <%= f.label :address, "Pickup address" %>
-  <%= f.text_field :address%>
+    <%= f.label :start_time, "From" %>
+    <%= f.time_select :start_time, ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20 %>
 
-  <%= f.label :description, "Comment" %>
-  <%= f.text_field :description%>
+    <%= f.label :end_time, "To" %>
+    <%= f.time_select :end_time, ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20  %>
 
-  <div class="driver_name">
+    <%= f.label :address, "Pickup address" %>
+    <%= f.text_field :address%>
+
     <%= f.label :Instructor %>
     <%= f.number_field :driver_id %>
 
-  </div>
+    </div>
 
-  <%= f.submit %>
+    <div class="appointment-submit">
+
+      <%= f.submit %>
+    </div>
+
+
 
 
 <% end %>

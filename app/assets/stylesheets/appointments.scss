@@ -59,9 +59,6 @@ li {
   text-align: center;
 }
 
-.driver_name{
-  // display: none;
-}
 
 .show-appointment{
   border: 1px solid black;
@@ -70,6 +67,19 @@ li {
 
 }
 
+
 .show-appointment:hover {
   background-color: #E3F4FA
+}
+
+#map{
+  height: 400px;
+}
+
+.drivers-address-latitude{
+  display: none;
+}
+
+.drivers-address-longitude{
+  display: none;
 }

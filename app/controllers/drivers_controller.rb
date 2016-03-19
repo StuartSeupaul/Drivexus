@@ -7,6 +7,7 @@ class DriversController < ApplicationController
 
   def index
     @drivers = Driver.all
+
     if params[:address]
     @nearby_drivers = Driver.near(params[:address], 10, unit: :km)
         respond_to do |format|
