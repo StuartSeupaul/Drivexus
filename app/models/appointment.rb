@@ -10,9 +10,17 @@ class Appointment < ActiveRecord::Base
     aend_time = end_time.strftime("%I:%M %p")
   end
 
-  def available_drivers
-    already_taken = Appointment.where(:driver_id => self.driver_id, :start_time => self.start_time, :end_time => self.end_time)
+  def available?(appointment_availability, driver_availability)
+     appointment_availability = Appointment.where(:driver_id => self.driver_id, :start_time => self.start_time, :end_time => self.end_time)
+     driver_availability = Driver.appointment.where(:driver_id =>self.driver_id, :start_time => self.start_time, :end_time => self.end_time)
+     if appointmentAvailability != driver_availability
+       true
+     else
+       false
+     end
   end
+
+
 
 
 end

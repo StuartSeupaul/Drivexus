@@ -22,7 +22,6 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = @user.appointments.build(appointment_params)
-
     if @appointment.save
 
       respond_to do |format|

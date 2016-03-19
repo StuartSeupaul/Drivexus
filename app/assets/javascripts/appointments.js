@@ -49,11 +49,19 @@ function itWorked(position) {
     method: 'get',
     data: data,
     dataType: 'script',
-    complete: function (data) {
-      $('show-drivers').val(){
+    complete: function () {
 
-      $('#map').val(parseInt($this).attr('data-latitude', $('#drivers-address-latitude'), 'data-longitude', $('#drivers-address-longitude')))
-    }
+
+      $('.drivers-address-latitude').each(function(idx, elm) {
+        var marker = new google.maps.Marker({
+          position: {
+            lat: parseFloat($($('.drivers-address-latitude')[idx]).text().trim()) ,
+            lng: parseFloat($($('.drivers-address-longitude')[idx]).text().trim())
+          },
+          map: window.map,
+          animation: google.maps.Animation.DROP
+        });
+      });
 
       $('.show-appointment').click(function(){
         $('#appointment_driver_id').val(parseInt($(this).attr('data-collect')))
@@ -70,6 +78,7 @@ function itWorked(position) {
 function itDidNotWork(error){
   console.log(error.message);
 }
+
 
 
 $('#drivers-by-address').on('click', function() {
