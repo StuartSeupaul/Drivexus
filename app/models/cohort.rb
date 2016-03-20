@@ -1,5 +1,6 @@
 class Cohort < ActiveRecord::Base
   has_many :exams
+  has_many :users
 
   def end_display
     mytime = self.end_date

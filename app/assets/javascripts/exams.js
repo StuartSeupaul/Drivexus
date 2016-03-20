@@ -2,19 +2,21 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready page:load', function () {
-  $('.showquestions').click(function () {
-    $(this).toggleClass('is-showing');
+
+  $('.flipq').click(function () {
+    $(this).toggleClass('questions-showing');
     $('.list-of-questions').toggleClass('list-showing');
   });
 
   $('.question-class').click(function () {
+    console.log($(this));
     var questionID = parseInt($(this).attr('data-qid'));   // get value of the answer (1 = true, 0 = false) from the form
     $('#attached_question_id').val(questionID);            // put the value in the corresponding field
     $('#new_attached').trigger('submit');                  // submit the form
   });
 
   $('.choicecontainer').click(function () {
-    $(this).toggleClass('is-clicked');
+    $(this).toggleClass('is-clicked');  // turns choice purple if clicked
   });
 
   // needs scantron_id, user_id, correct
@@ -30,6 +32,7 @@ $(document).on('ready page:load', function () {
       self.parent().find('.realanswerchoice').val(self.attr('data-cnum'));
       if(self.attr('data-spoon') == 1) {
         correctAnswers++;
+        // changes color of div to green and records the answer as correct in the answer object
         $(this).toggleClass('is-correct');
         $(this).parent().find('.realanswercorrect').val(true);
       } else {

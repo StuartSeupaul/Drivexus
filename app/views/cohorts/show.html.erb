@@ -3,6 +3,32 @@
   to
 <%= @cohort.end_display %></p>
 
+<h3>Add Student to Cohort</h3>
+<% if @user_list %>
+  <% @user_list.each do |user| %>
+    <div class="new-student-list">
+      <%= user.name %>
+
+      <%= form_for user do |f| %>
+      <%= f.hidden_field :cohort_id, class: "cohort-add" %>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h3>Students in Cohort</h3>
+<% if @users %>
+  <div class="student-container">
+    <% @users.each do |user| %>
+      <div class="individual-student">
+        <%= user.name %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <% if @exams.any? %>
   <% @exams.each do |exam| %>
     <div>

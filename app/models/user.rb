@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :scantrons
   has_many :drivers, through: :appointments
+  belongs_to :cohort
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes["password"] }

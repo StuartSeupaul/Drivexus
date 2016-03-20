@@ -12,6 +12,13 @@ class CohortsController < ApplicationController
   def show
     @exams = @cohort.exams
 
+    if @cohort.users.any?
+      @users = @cohort.users
+    end
+
+    if User.any?
+      @user_list = User.all
+    end
   end
 
   def update

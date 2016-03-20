@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319182150) do
+ActiveRecord::Schema.define(version: 20160320200019) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "scantron_id"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20160319182150) do
     t.datetime "updated_at"
     t.string   "role"
     t.string   "name"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
