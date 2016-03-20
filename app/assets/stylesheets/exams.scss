@@ -127,17 +127,6 @@
   display: none;
 }
 
-.truechoicecontainer {
-  margin: 10px;
-  padding: 20px;
-  display: block;
-  border: 2px solid rgb(57, 17, 49);
-  width: 25%;
-  background-color: rgb(18, 147, 69);
-  color: white;
-  font-weight: bolder;
-}
-
 
 #testsubmitbutton {
   background-color: rgba(236, 122, 40, .8);
@@ -149,4 +138,24 @@
   width: 15%;
   border-bottom-left-radius: 25%;
   border-bottom-right-radius: 25%;
+}
+
+.results-container {
+  margin: 10px;
+  padding: 20px;
+  display: block;
+  border: 2px solid rgb(57, 17, 49);
+  width: 25%;
+
+  &.is-correct {
+    background-color: rgb(18, 147, 69);
+    color: white;
+    font-weight: bolder;
+  }
+
+  &.is-incorrect {
+    background-color: rgb(153, 39, 14);
+    color: white;
+    font-weight: bolder;
+  }
 }

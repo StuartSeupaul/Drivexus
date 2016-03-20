@@ -64,27 +64,19 @@
 
 <span id="scantronid"><%= @scantron.id %></span>
 
-<% if @scantron.result %>
-  <% @attachedquestions.each do |question| %>
-    <div class="answeredquestioncontainer">
-      <!-- Visible div to click choices  -->
-      <p class="answeredquestioncontent"><%= question.content %></p>
-      <% question.choices.each do |choice| %>
-        <% queryanswer = @answers.where(question_id: question.id).first %>
-        <% if queryanswer %>
-          <% queryanswer.correct && choice.correct ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
-        <% end %>
-        <div class='<%= answered_class %>' id="answeredchoicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
-          <%= choice.content %>
-        </div>
-      <% end %>
-
-    </div>
-  <% end %>
-<% end %>
-
 <% if @answers %>
-  <% @answers.each do |answer| %>
-
+  <h2>You scored <%= @scantron.convert_to_percent %> on this test.</h2>
+  <% @answers.each_with_index do |answer, index| %>
+    <h3><%= index + 1 %>) <%= answer.question.content %></h3>
+    <% answer.question.choices.each do |choice| %>
+      <% if answer.choice_id == choice.id %>
+        <% answer.correct ? answered_class = "results-container is-correct" : answered_class = "results-container is-incorrect" %>
+      <% else %>
+        <% choice.correct ? answered_class = "results-container is-correct" : answered_class = "results-container" %>
+      <% end %>
+      <div class="<%= answered_class %>">
+        <%= choice.content %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
