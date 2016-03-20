@@ -64,12 +64,13 @@ li {
   border: 1px solid black;
   display: inline-block;
   padding: 15px;
-
+  cursor:pointer;
 }
 
 
 .show-appointment:hover {
   background-color: #E3F4FA
+
 }
 
 #map{
@@ -82,4 +83,8 @@ li {
 
 .drivers-address-longitude{
   display: none;
+}
+
+.hide-appointment-form{
+  display:none
 }
