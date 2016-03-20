@@ -49,7 +49,7 @@ $(document).on('ready page:load', function () {
       dataType: 'script'
     });
 
-    
+
 
     $('#testsubmitbutton').css('display', 'none');
 

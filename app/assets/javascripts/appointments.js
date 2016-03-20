@@ -7,17 +7,13 @@ $(document).on("ready page:load", function(){
 
   });
 
-
   $('#nearby-drivers').on('click', function(e) {
     e.preventDefault();
     moveValue();
 
-
     if("geolocation" in navigator)  {
       navigator.geolocation.getCurrentPosition(itWorked, itDidNotWork);
     }
-
-
   })
 
   $('#drivers-by-address').on('click', function(e){
@@ -51,7 +47,6 @@ function itWorked(position) {
     dataType: 'script',
     complete: function () {
 
-
       $('.drivers-address-latitude').each(function(idx, elm) {
         var marker = new google.maps.Marker({
           position: {
@@ -66,10 +61,16 @@ function itWorked(position) {
       $('.show-appointment').click(function(){
         $('#appointment_driver_id').val(parseInt($(this).attr('data-collect')))
 
-
-
-
       });
+
+      $('.show-drivers').on('click','.show-appointment',function () {
+        $(this).parent().find('.show-appointment').css('background-color', '#ffffff');
+        $(this).css({
+          'background-color': 'rgb(75, 182, 210)',
+          'font-weight':' bolder'
+        });
+});
+
     }
   })
 
@@ -79,15 +80,9 @@ function itDidNotWork(error){
   console.log(error.message);
 }
 
-
-
 $('#drivers-by-address').on('click', function() {
-
   moveValue();
 });
-
-
-
 
 function moveValue() {
   $('#appointment_date').val($('#date_').val());
@@ -97,9 +92,9 @@ function moveValue() {
   $('#appointment_end_time_4i').val($('#end_time__4i').val());
 
   $('#appointment_address').val($('#address').val());
-
-
 }
+
+
 
 
 })
