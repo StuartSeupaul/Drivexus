@@ -17,4 +17,16 @@ class User < ActiveRecord::Base
     u = User.where(name: name).first
     u.id
   end
+
+  def completed_any_test?
+    Scantron.any_test_complete?(self.id)
+  end
+
+  def self.any_user_completed_test?
+    User.all.each { |user|
+      return true if Scantron.any_test_complete?(user.id)
+    }
+    return false
+  end
+
 end

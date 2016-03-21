@@ -16,30 +16,39 @@ class CohortsController < ApplicationController
 
     if @cohort.users.any?
       @users = @cohort.users
+      if User.any?
+        @user_list = User.all - @users
+      else
+        @user_list = User.all
+      end
+    else
+      @users = User.all
+      @user_list = User.all
     end
 
-    if User.any?
-      @user_list = User.all - @users
-    end
-
-    @exam_labels = {}
-    @exams.each_with_index { |exam, index|
-      @exam_labels[index] = exam.name
-    }
-
-    g = Gruff::Bar.new
-    g.title = "Exam Results for Cohort"
-    g.labels = @exam_labels
-    @users.each { |user|
-      test_results = []
-      user.scantrons.each { |scantron|
-        test_results << scantron.result if scantron.result != nil
+    if current_user.scantrons.any?
+      @exam_labels = {}
+      @exams.each_with_index { |exam, index|
+        @exam_labels[index] = exam.name
       }
-      g.data user.name.to_sym, test_results
-    }
-    g.marker_count = 1
-    g.write('app/assets/images/examresults.png')
 
+      g = Gruff::StackedArea.new
+      g.title = "Exam Results for Cohort"
+      g.x_axis_label = "Test"
+      g.y_axis_label = "Results"
+      g.labels = @exam_labels
+      @users.each { |user|
+        test_results = []
+        user.scantrons.each { |scantron|
+          test_results << scantron.convert_to_percent if scantron.result != nil
+        }
+        g.data user.name.to_sym, test_results
+      }
+      g.maximum_value = 100
+      g.minimum_value = 0
+      g.marker_count = 1
+      g.write('app/assets/images/examresults.png')
+    end
   end
 
   def update

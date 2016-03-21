@@ -41,6 +41,7 @@
 </div>
 <% end %>
 
+<br>
 <% if current_user && @scantron.result == nil %>
   <% @attachedquestions.each do |question| %>
     <div class="questioncontainer">
@@ -63,7 +64,7 @@
 
     </div>
   <% end %>
-  <div id="testsubmitbutton">Submit</a>
+  <div id="testsubmitbutton">Submit</div>
 <% end %>
 
 <span id="scantronid"><%= @scantron.id %></span>
@@ -84,3 +85,7 @@
     <% end %>
   <% end %>
 <% end %>
+
+<br>
+<br>
+<%= link_to "Back to Cohort Page", cohort_path(params[:cohort_id]) %>

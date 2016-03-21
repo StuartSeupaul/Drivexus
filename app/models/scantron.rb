@@ -27,5 +27,8 @@ class Scantron < ActiveRecord::Base
     scantron_class
   end
 
+  def self.any_test_complete?(user_id)
+    Scantron.where(user_id: user_id).where.not('result' => nil).first
+  end
 
 end
