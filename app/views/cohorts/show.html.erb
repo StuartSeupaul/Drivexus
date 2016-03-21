@@ -31,13 +31,18 @@
 <% if @exams.any? %>
   <% @exams.each do |exam| %>
       <%= link_to cohort_exam_path(@cohort, exam) do %>
-        <div class="cohorts-exam-list">
+        <% exam_class = "cohorts-exam-list" %>
+        <% if Scantron.find_scantron_by_exam(exam.id, current_user.id) %>
+          <% exam_class = Scantron.class_for_scantron(exam.id, current_user.id) %>
+        <% end %>
+        <% exam_class = "cohorts-exam-list" if exam_class == false %>
+        <div class= <%= exam_class %>>
           <%= exam.name %>
         </div>
       <% end %>
   <% end %>
 <% end %>
-
+<br>
 <% unless current_user.role == "student" %>
 <%= link_to "Create New Exam", new_cohort_exam_path(@cohort) %>
 <% end %>

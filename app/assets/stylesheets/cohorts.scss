@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.new-student-list, .individual-student, .cohorts-exam-list {
+.new-student-list, .individual-student {
   display: inline-block;
   padding: 10px;
   border-radius: 10%;
@@ -28,6 +28,47 @@
   display: none;
 }
 
+.cohorts-exam-list {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10%;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+
+  &.passed {
+    background-color: rgba(18, 147, 69, 0.8);
+  }
+
+  &.failed {
+    background-color: rgba(153, 39, 14, 0.8)
+  }
+}
+
 .cohorts-exam-list:hover {
   color: rgba(215, 121, 10, 0.85);
+}
+
+.cohorts-exam-list-passed {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10%;
+  border: 1px solid black;
+  background-color: rgba(18, 147, 69, 0.8);
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.cohorts-exam-list-failed {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10%;
+  border: 1px solid black;
+  background-color: rgba(153, 39, 14, 0.8);
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
 }

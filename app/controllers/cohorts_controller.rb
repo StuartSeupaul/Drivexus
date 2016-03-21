@@ -27,18 +27,17 @@ class CohortsController < ApplicationController
       @exam_labels[index] = exam.name
     }
 
-    g = Gruff::Dot.new
+    g = Gruff::Area.new
     g.title = "Exam Results for Cohort"
     g.labels = @exam_labels
     @users.each { |user|
       test_results = []
       user.scantrons.each { |scantron|
-        test_results << scantron.result
+        test_results << scantron.result if scantron.result != nil
       }
-      # g.data "#{user.name}", test_results
+      g.data user.name.to_sym, test_results
     }
     g.marker_count = 1
-    g.data :stuart, [100,50,75,33]
     g.write('app/assets/images/examresults.png')
 
   end
