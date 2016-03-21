@@ -1,3 +1,33 @@
 // Place all the styles related to the Cohorts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-student-list, .individual-student, .cohorts-exam-list {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10%;
+  border: 1px solid rgba(215, 121, 10, 0.85);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+
+  transition: all 200ms;
+
+  &.is-added-cohort{
+    display: none;
+  }
+}
+
+.new-student-list:hover {
+  border: 4px solid rgba(215, 121, 10, 0.85);
+  padding: 5px;
+}
+
+.edit_user, #cohort-id {
+  display: none;
+}
+
+.cohorts-exam-list:hover {
+  color: rgba(215, 121, 10, 0.85);
+}

@@ -11,9 +11,13 @@ class AttachedsController < ApplicationController
         @attachedqs = @ex.questions
         @index = @attachedqs.count - 1
         @unusedqs = @qs - @attachedqs
+        @current_question = Question.where(id: @attachedquestion.question_id).first
+        @category = Category.where(id: @current_question.category_id).first
+
         format.js
       end
     end
+
   end
 
   private

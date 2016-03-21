@@ -3,7 +3,7 @@
   <% if question.choices.any? %>
     <ul>
       <% question.choices.each do |choice| %>
-        <% choice.correct == 1 ? color_class = "correct" : color_class = "incorrect"%>
+        <% choice.correct ? color_class = "correct" : color_class = "incorrect"%>
         <li class="<%= color_class %>"><%= choice.content %></li>
       <% end %>
     </ul>

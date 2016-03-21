@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311190045) do
+ActiveRecord::Schema.define(version: 20160320200019) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "scantron_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.boolean  "correct"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "choice_id"
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -41,12 +42,18 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "choices", force: :cascade do |t|
     t.string   "content"
     t.integer  "question_id"
-    t.integer  "correct"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "correct"
   end
 
   create_table "cohorts", force: :cascade do |t|
@@ -82,18 +89,11 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "grades", force: :cascade do |t|
-    t.integer  "student_id"
-    t.string   "test_name"
-    t.integer  "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.integer  "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean  "completed"
+    t.float    "result"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20160311190045) do
     t.datetime "updated_at"
     t.string   "role"
     t.string   "name"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

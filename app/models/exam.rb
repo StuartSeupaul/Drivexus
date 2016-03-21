@@ -25,5 +25,9 @@ class Exam < ActiveRecord::Base
       running_score != 0 ? "#{((running_score.sum / running_score.length)*100)}%" : ""
     end
   end
-  
+
+  def self.get_exam_by_scantron(scantron)
+    Exam.where(id: scantron.exam_id).first
+  end
+
 end

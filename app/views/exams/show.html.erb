@@ -1,5 +1,6 @@
-<h1><%= @exam.name %></h1>
+<h1><%= @exam.name %> Test</h1>
 
+<% unless current_user.role == "student" %>
 <div class="attachedquestionlist">
   <% if @attachedquestions.any? %>
     <h3>List of Questions on Exam</h3>
@@ -16,59 +17,70 @@
 <% end %>
 
 <br>
-<label class="collapseexam" for="_1">List Of Questions Available To Add</label>
-<input id="_1" type="checkbox">
+
+<div class="flipq showquestions">
+  <span class="display-question show-question-list">SHOW QUESTIONS</span>
+  <span class="hide-question show-question-list">HIDE QUESTIONS</span>
+</div>
 
 <div class="list-of-questions">
   <div>
     <%= link_to "Add New Question", new_question_path %>
   </div>
-  <div class="unusedlist">
-    <%= render partial: 'questions/form', collection: @unusedquestions, as: :question%>
-  </div>
-</div>
 
-<% if current_user && @scantron.completed == false %>
-  <h1 id="test-title">Test</h1>
+  <% @categories.each do |category| %>
+    <% if category.questions.any? %>
+      <div class="examcategories">
+        <h3><%= category.name %></h3>
+          <% ids_of_unused_questions = @unusedquestions.map(&:id) %>
+          <% unused_questions_in_category = category.questions.where(id: ids_of_unused_questions) %>
+        <%= render partial: 'questions/form', collection: unused_questions_in_category, as: :question%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
+
+<% if current_user && @scantron.result == nil %>
   <% @attachedquestions.each do |question| %>
     <div class="questioncontainer">
       <!-- Hidden form for submitting an answer  -->
       <%= form_for Answer.new, :html => {:class => 'realanswerform'}, remote: true do |f| %>
         <%= f.hidden_field(:scantron_id, :value => @scantron.id) %>
         <%= f.hidden_field(:question_id, :value => question.id) %>
+        <%= f.hidden_field(:choice_id, :class => 'realanswerchoice') %>
         <%= f.hidden_field(:correct, :value => false, :class => 'realanswercorrect', :id => question.id) %>
         <%= f.submit :class => 'realanswersubmit' %>
       <% end %>
       <!-- Visible div to click choices  -->
       <p class="questioncontent"><%= question.content %></p>
       <% question.choices.each do |choice| %>
-        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
+        <% choice.correct ? choicelisting = 1 : choicelisting = 0 %>
+        <div class="choicecontainer" id="choicecontainer" data-spoon="<%=choicelisting%>" data-qnum ="<%= question.id %>" data-cnum="<%= choice.id %>">
           <%= choice.content %>
         </div>
       <% end %>
 
     </div>
   <% end %>
-  <a class="action-button shadow animate blue" id="testsubmitbutton">Submit</a>
+  <div id="testsubmitbutton">Submit</a>
 <% end %>
 
 <span id="scantronid"><%= @scantron.id %></span>
 
-<% if @scantron.completed == true %>
-  <% @attachedquestions.each do |question| %>
-    <div class="answeredquestioncontainer">
-      <!-- Visible div to click choices  -->
-      <p class="answeredquestioncontent"><%= question.content %></p>
-      <% question.choices.each do |choice| %>
-        <% queryanswer = @answers.where(question_id: question.id).first %>
-        <% if queryanswer %>
-          <% queryanswer.correct && choice.correct == 1 ? answered_class = "truechoicecontainer" : answered_class = "choicecontainer" %>
-        <% end %>
-        <div class='<%= answered_class %>' id="answeredchoicecontainer" data-spoon="<%=choice.correct%>" data-qnum ="<%= question.id %>" >
-          <%= choice.content %>
-        </div>
+<% if @answers %>
+  <h2>You scored <%= @scantron.convert_to_percent %> on this test.</h2>
+  <% @answers.each_with_index do |answer, index| %>
+    <h3><%= index + 1 %>) <%= answer.question.content %></h3>
+    <% answer.question.choices.each do |choice| %>
+      <% if answer.choice_id == choice.id %>
+        <% answer.correct ? answered_class = "results-container is-correct" : answered_class = "results-container is-incorrect" %>
+      <% else %>
+        <% choice.correct ? answered_class = "results-container is-correct" : answered_class = "results-container" %>
       <% end %>
-
-    </div>
+      <div class="<%= answered_class %>">
+        <%= choice.content %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

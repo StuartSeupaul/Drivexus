@@ -34,6 +34,7 @@
       game.stage.backgroundColor = 'rgb(14, 57, 15)';
 
       game.load.image('yourCar', '<%= image_path 'Car.png' %>');
+
       game.time
     }
 
@@ -172,7 +173,6 @@
           failCalled = true;
         }
 
-        console.log(yourCar.y);
         if (yourCar.y <= 100 && yourCar.y >= 99 && failCalled === false){
           if (trueCalled === false){
             $('.winlose').html("You succeeded!");

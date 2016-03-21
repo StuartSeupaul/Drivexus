@@ -1,10 +1,41 @@
-<p>
+<h1>
   <%= @user.name %><br>
-  <%= @user.email %><br>
-</p>
+</h1>
+<br>
+<br>
+<div class="user-link-images">
+  <div class="user-book-appointment">
+    <h4>BOOK AN APPOINTMENT</h4>
+    <%= link_to image_tag("calendar.svg", width: 100, height: 100), new_user_appointment_path(@user.id) %>
+  </div>
+  <br>
+  <div class="user-do-test">
+    <h4>TESTS</h4>
+    <%= link_to image_tag("Test-paper-icon.png", width: 100, height: 100), cohorts_path %>
+  </div>
+</div>
+<br>
+<div class="user-scantron-results">
+  <% if @user.scantrons.any? %>
+    <h4>Exam Results</h4>
+    <% @user.scantrons.each do |scantron| %>
+      <% if scantron.result != nil  %>
+      <ul>
+        <li>
+          <div>
+            <%= scantron.exam.name %>
+          </div>
+          <% examNumber = Exam.get_exam_by_scantron(scantron) %>
+          <% cohortNumber = Cohort.get_cohort_by_exam(examNumber) %>
+          <%= link_to scantron.convert_to_percent, cohort_exam_path(cohortNumber, examNumber) %>
+        </li>
+      </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
 
-<%= link_to 'Make an appointment', new_user_appointment_path(@user.id) %>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="usersfooter">
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>

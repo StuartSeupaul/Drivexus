@@ -5,6 +5,11 @@
     <%= f.text_area :content %>
   </div>
 
+  <div>
+    <%= f.label :category_id %>
+    <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]} %>
+  </div>
+  
   <h2>Choices</h2>
 
   <%= f.fields_for :choices do |choice_fields| %>

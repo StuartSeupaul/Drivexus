@@ -1,11 +1,11 @@
 class ScantronsController < ApplicationController
 
   def create
+
     @scantron = Scantron.build(scantron_params)
-
-    if @scantron.save
-
+      if @scantron.save
     end
+
   end
 
   def update
@@ -18,6 +18,6 @@ class ScantronsController < ApplicationController
   private
 
   def scantron_params
-    params.require(:scantron).permit(:user_id, :exam_id, :completed)
+    params.require(:scantron).permit(:user_id, :exam_id, :result)
   end
 end
