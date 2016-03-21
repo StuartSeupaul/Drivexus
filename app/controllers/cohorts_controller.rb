@@ -27,7 +27,7 @@ class CohortsController < ApplicationController
       @exam_labels[index] = exam.name
     }
 
-    g = Gruff::Area.new
+    g = Gruff::Bar.new
     g.title = "Exam Results for Cohort"
     g.labels = @exam_labels
     @users.each { |user|

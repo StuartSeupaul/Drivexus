@@ -4,7 +4,7 @@ class Scantron < ActiveRecord::Base
   belongs_to :user
 
   def convert_to_percent
-    "#{(self.result*100).round(2)} %"
+    (self.result*100).round(2)
   end
 
   def self.find_scantron_by_exam(exam_id, user_id)
@@ -26,5 +26,6 @@ class Scantron < ActiveRecord::Base
 
     scantron_class
   end
+
 
 end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'gruff'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :new, :create]
 
@@ -12,6 +13,21 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(current_user.id)
+    exam_labels = {}
+
+    g = Gruff::Bar.new
+    g.title = "Exam Results for #{current_user.name}"
+
+    test_results = []
+    current_user.scantrons.each_with_index { |scantron, index|
+      test_results << scantron.convert_to_percent if scantron.result != nil
+      exam_labels[index] = Exam.get_exam_by_scantron(scantron).name
+    }
+    g.data current_user.name.to_sym, test_results
+
+    g.labels = exam_labels
+    g.marker_count = 1
+    g.write('app/assets/images/userexamresults.png')
   end
 
   # GET /users/new

@@ -15,25 +15,14 @@
   </div>
 </div>
 <br>
+
 <div class="user-scantron-results">
   <% if @user.scantrons.any? %>
-    <h4>Exam Results</h4>
-    <% @user.scantrons.each do |scantron| %>
-      <% if scantron.result != nil  %>
-      <ul>
-        <li>
-          <div>
-            <%= scantron.exam.name %>
-          </div>
-          <% examNumber = Exam.get_exam_by_scantron(scantron) %>
-          <% cohortNumber = Cohort.get_cohort_by_exam(examNumber) %>
-          <%= link_to scantron.convert_to_percent, cohort_exam_path(cohortNumber, examNumber) %>
-        </li>
-      </ul>
-      <% end %>
-    <% end %>
+    <%= image_tag('userexamresults.png') %>
   <% end %>
 </div>
+<br>
+
 
 <div class="usersfooter">
   <%= link_to 'Edit', edit_user_path(@user) %> |
