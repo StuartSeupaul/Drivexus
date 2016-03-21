@@ -11,9 +11,9 @@
   padding: 10px;
 
   transition-property: all;
-  transition-duration: 1s;
+  transition-duration: 2s;
   transition-timing-function: cubic-bezier(.42, 0, .58, 1);
-  transition-delay: 0;
+  transition-delay: 2;
 
   &.is-showing{
     display: inline-block;
@@ -24,6 +24,7 @@
     padding-right: 25px;
     padding-top: 15px;
     padding-bottom: 15px;
+    width: 50%;
   }
 }
 
@@ -33,7 +34,7 @@
   transition-property: all;
   transition-duration: 1s;
   transition-timing-function: cubic-bezier(.42, 0, .58, 1);
-  transition-delay: 0;
+  transition-delay: 2s;
 
   &.list-showing {
     display: block;
@@ -54,16 +55,12 @@
   font-weight: bolder;
 }
 
-.attached-question-class {
-  width: 40%;
-}
 
 .attached-question-class:hover {
   border-bottom: 4px solid rgb(111, 41, 212);
   border-top: 4px solid rgb(111, 41, 212);
   background-color: black;
   color: white;
-  width: 40%;
 }
 
 .questioncontent {
@@ -80,19 +77,6 @@
 	-webkit-transition: all 0.1s;
 }
 
-.action-button
-{
-	position: relative;
-	padding: 10px 40px;
-  margin: 0px 10px 10px 0px;
-  float: left;
-	border-radius: 10px;
-	font-family: 'Times New Roman', cursive;
-	font-size: 25px;
-	color: #FFF;
-  font-weight: bolder;
-	text-decoration: none;
-}
 
 .blue
 {
@@ -101,12 +85,6 @@
 	text-shadow: 0px -2px #2980B9;
 }
 
-.action-button:active
-{
-	transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
-	border-bottom: 1px solid;
-}
 
 .choicecontainer {
   margin: 10px;
@@ -160,4 +138,35 @@
   background-color: rgb(18, 147, 69);
   color: white;
   font-weight: bolder;
+}
+
+.testsubmitbutton {
+  background-color: black;
+  border-top-left-radius: 50%;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  padding: 20px;
+  width: 25%;
+
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(.42, 0, .58, 1);
+  transition-delay: 0;
+
+  &.testsubmitted {
+    position: absolute;
+    right: 300px;
+    opacity: 0%
+  }
+}
+
+.testsubmitbutton:hover {
+  background-color: rgb(164, 151, 26);
+  border-color: black;
+  border-top-right-radius: 50%;
+  font-weight: bolder;
+  font-size: 30px;
+  padding: 20px;
+  width: 25%;
 }

@@ -12,10 +12,9 @@ class ExamsController < ApplicationController
 
   def show
     # For creating an exam
-    @questions = Question.all
     @attachedquestion = Attached.new
     @attachedquestions = @exam.questions
-    @unusedquestions = @questions - @attachedquestions
+    @unusedquestions = @exam.unused_questions
 
     # For doing an exam
     if Scantron.where(user_id: current_user).where(exam_id: @exam.id).first

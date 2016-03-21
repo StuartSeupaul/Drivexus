@@ -28,8 +28,8 @@
     <% if category.questions.any? %>
       <div class="examcategories">
         <h3><%= category.name %></h3>
-          <% ids_of_unused_questions = @unusedquestions.map(&:id) %>
-          <% unused_questions_in_category = category.questions.where(id: ids_of_unused_questions) %>
+        <% ids_of_unused_questions = @unusedquestions.map(&:id) %>
+        <% unused_questions_in_category = category.questions.where(id: ids_of_unused_questions) %>
         <%= render partial: 'questions/form', collection: unused_questions_in_category, as: :question%>
       </div>
     <% end %>
@@ -58,7 +58,7 @@
 
     </div>
   <% end %>
-  <a class="action-button shadow animate blue" id="testsubmitbutton">Submit</a>
+  <div class="testsubmitbutton">SUBMIT</div>
 <% end %>
 
 <span id="scantronid"><%= @scantron.id %></span>

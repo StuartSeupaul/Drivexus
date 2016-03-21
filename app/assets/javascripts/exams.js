@@ -18,7 +18,7 @@ $(document).on('ready page:load', function () {
   });
 
   // needs scantron_id, user_id, correct
-  $('#testsubmitbutton').click(function () {
+  $('.testsubmitbutton').click(function () {
     gradeForTest = 0.0;
     totalQuestions = 0;
     correctAnswers = 0;
@@ -56,7 +56,7 @@ $(document).on('ready page:load', function () {
       dataType: 'script'
     });
 
-    $('#testsubmitbutton').css('display', 'none');
+    $('.testsubmitbutton').css('display', 'none');
 
   });
 

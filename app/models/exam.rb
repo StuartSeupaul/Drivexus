@@ -30,4 +30,8 @@ class Exam < ActiveRecord::Base
     Exam.where(id: scantron.exam_id).first
   end
 
+  def unused_questions
+    Question.all - self.questions
+  end
+
 end
