@@ -1,40 +1,43 @@
 <h1><%= @cohort.name %></h1>
+<span id="cohort-id"><%= @cohort.id %></span>
 <p><%= @cohort.start_display %>
   to
 <%= @cohort.end_display %></p>
 
+<% if @user_list != [] %>
 <h3>Add Student to Cohort</h3>
-<% if @user_list %>
   <% @user_list.each do |user| %>
     <div class="new-student-list">
       <%= user.name %>
 
-      <%= form_for user do |f| %>
+      <%= form_for user, remote:true do |f| %>
       <%= f.hidden_field :cohort_id, class: "cohort-add" %>
-      <%= f.submit %>
+      <%= f.submit class: "hidden_cohort_user_update" %>
       <% end %>
     </div>
   <% end %>
 <% end %>
 
-
-<h3>Students in Cohort</h3>
 <% if @users %>
+<h3>Students in Cohort</h3>
   <div class="student-container">
-    <% @users.each do |user| %>
-      <div class="individual-student">
-        <%= user.name %>
-      </div>
-    <% end %>
+    <%= render @users %>
   </div>
 <% end %>
-
+<br>
+<%= image_tag('examresults.png') %>
+<br>
+<br>
 <% if @exams.any? %>
   <% @exams.each do |exam| %>
-    <div>
-      <%= link_to exam.name, cohort_exam_path(@cohort, exam) %>
-    </div>
+      <%= link_to cohort_exam_path(@cohort, exam) do %>
+        <div class="cohorts-exam-list">
+          <%= exam.name %>
+        </div>
+      <% end %>
   <% end %>
 <% end %>
 
+<% unless current_user.role == "student" %>
 <%= link_to "Create New Exam", new_cohort_exam_path(@cohort) %>
+<% end %>

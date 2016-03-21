@@ -1,5 +1,6 @@
-<h1><%= @exam.name %></h1>
+<h1><%= @exam.name %> Test</h1>
 
+<% unless current_user.role == "student" %>
 <div class="attachedquestionlist">
   <% if @attachedquestions.any? %>
     <h3>List of Questions on Exam</h3>
@@ -38,9 +39,9 @@
     <% end %>
   <% end %>
 </div>
+<% end %>
 
-<% if current_user && @scantron.result === nil %>
-  <h1 id="test-title">Test</h1>
+<% if current_user && @scantron.result == nil %>
   <% @attachedquestions.each do |question| %>
     <div class="questioncontainer">
       <!-- Hidden form for submitting an answer  -->

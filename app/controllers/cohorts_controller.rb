@@ -1,4 +1,6 @@
 class CohortsController < ApplicationController
+  require 'gruff'
+
   before_action :load_cohort, only: [:show, :edit, :destroy]
 
   def index
@@ -17,8 +19,28 @@ class CohortsController < ApplicationController
     end
 
     if User.any?
-      @user_list = User.all
+      @user_list = User.all - @users
     end
+
+    @exam_labels = {}
+    @exams.each_with_index { |exam, index|
+      @exam_labels[index] = exam.name
+    }
+
+    g = Gruff::Dot.new
+    g.title = "Exam Results for Cohort"
+    g.labels = @exam_labels
+    @users.each { |user|
+      test_results = []
+      user.scantrons.each { |scantron|
+        test_results << scantron.result
+      }
+      # g.data "#{user.name}", test_results
+    }
+    g.marker_count = 1
+    g.data :stuart, [100,50,75,33]
+    g.write('app/assets/images/examresults.png')
+
   end
 
   def update
