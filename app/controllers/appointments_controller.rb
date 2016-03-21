@@ -17,20 +17,23 @@ class AppointmentsController < ApplicationController
 
   def edit
     @appointment = @user.appointments.find(@user_id, @appointment)
+
   end
 
 
   def create
     @appointment = @user.appointments.build(appointment_params)
-    if @appointment.save
+
+      if @appointment.save
 
       respond_to do |format|
 
-        format.html{ redirect_to user_appointment_path(@user,@appointment)}
-        format.js { }
+        format.html{ redirect_to user_appointment_path(@user, @appointment), notice: 'Appointment has successfully created'}
+        format.js {}
       end
       else
-      render :new
+        format.html { render :new, alert: 'Try again'}
+        format.js {}
     end
 
   end
