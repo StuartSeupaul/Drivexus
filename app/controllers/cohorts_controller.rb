@@ -32,7 +32,7 @@ class CohortsController < ApplicationController
         @exam_labels[index] = exam.name
       }
 
-      g = Gruff::StackedArea.new
+      g = Gruff::Line.new
       g.title = "Exam Results for Cohort"
       g.x_axis_label = "Test"
       g.y_axis_label = "Results"

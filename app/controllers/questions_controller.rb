@@ -3,6 +3,8 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    answers = Question.first.answers_for_a_question * 100
+    Question.average_difficulty_of_question(answers)
   end
 
   def new
