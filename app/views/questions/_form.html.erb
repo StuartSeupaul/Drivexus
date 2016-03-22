@@ -1,6 +1,7 @@
 <div class="question-class" data-qid="<%= question.id %>">
   <% answers = Question.first.answers_for_a_question %>
   <% rating = Question.average_difficulty_of_question(answers) %>
+
   <span>
     &nbsp;
     <% 1.upto(Question.number_of_stars(rating)) do |star| %>

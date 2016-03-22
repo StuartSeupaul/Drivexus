@@ -5,6 +5,7 @@
     <style>* { padding: 0; margin: 0; }</style>
 </head>
 <body>
+<span id="scantronid"><%= @scantron.id %></span>
 
 <div class="winlose"></div>
 
@@ -156,6 +157,20 @@
       drawnObject.anchor.setTo(0.5, 0.5);
     }
 
+    function sendResults(win) {
+      win === "yes" ? gradeForTest = 1 : gradeForTest = 0
+
+      var scanid = parseInt($('#scantronid').html());
+      var urlfull = '/scantrons/' + scanid
+
+      $.ajax({
+        url: urlfull,
+        method: 'put',
+        data: {scantron:{result: gradeForTest}},
+        dataType: 'script'
+      });
+    }
+
     function update() {
       if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
         yourCar.x -= 1;
@@ -169,6 +184,7 @@
           if (failCalled === false){
             $('.winlose').css('display','block');
             $('.winlose').html("You ran a red light!");
+            sendResults("no");
           }
           failCalled = true;
         }
@@ -178,7 +194,7 @@
             $('.winlose').html("You succeeded!");
             $('.winlose').css('background-color','green');
             $('.winlose').css('display','block');
-
+            sendResults("yes");
           }
           trueCalled = true;
         }
