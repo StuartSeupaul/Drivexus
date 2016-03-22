@@ -1,4 +1,7 @@
 class Exam < ActiveRecord::Base
+  validates :name, :presence => true
+  validates :cohort_id, :presence => true
+
   belongs_to :cohort
   has_many :attacheds
   has_many :questions, :through => :attacheds

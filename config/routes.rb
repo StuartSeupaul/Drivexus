@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   # root :to => 'cohorts#index'
 
-  resources :welcome
+  resources :welcome, only: [:create]
   resources :user_sessions
 
   resources :drivers do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions
-  resources :attacheds, only: [:create]
+  resources :attacheds, only: [:create, :destroy]
   resources :answers
   resources :scantrons, only: [:create, :update]
 

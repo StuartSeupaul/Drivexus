@@ -1,4 +1,6 @@
 class Scantron < ActiveRecord::Base
+  validates :user_id, :presence => true
+
   has_many :answers
   belongs_to :exam
   belongs_to :user
@@ -29,6 +31,10 @@ class Scantron < ActiveRecord::Base
 
   def self.any_test_complete?(user_id)
     Scantron.where(user_id: user_id).where.not('result' => nil).first
+  end
+
+  def self.get_scantrons_with_game_finished
+    Scantron.where.not('game_name' => nil).where.not('result' => nil)
   end
 
 end

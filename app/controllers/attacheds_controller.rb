@@ -20,6 +20,11 @@ class AttachedsController < ApplicationController
 
   end
 
+  def destroy
+    @attached = Attached.find(params[:id])
+    @attached = Attached.destroy
+  end
+
   private
 
   def attached_params
