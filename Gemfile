@@ -33,6 +33,10 @@ gem 'cancancan', '~> 1.10'
 # for nesting forms
 gem 'cocoon'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 
 #for graphs and charts
 gem 'gruff'
