@@ -1,12 +1,25 @@
 
-  <div class="show-drivers" >
-      <h2>Nearby drivers</h2>
-    <ol>
+      <div class="show-drivers" >
+
+        <div class="row">
+
+
+        <div class="span9">
+
       <% if @nearby_drivers.present? %>
         <% @nearby_drivers.each do |driver| %>
+
         <div class= "show-appointment" data-collect = "<%= driver.id %>" >
-        <%= driver.name  %><br>
-        <%= driver.bio %><br>
+          <div class="row">
+          <div class="span6">
+
+            <div class="span2">
+              <%= driver.photo %>
+            <%= driver.name  %><br>
+            <%= driver.bio %><br>
+            </div>
+      </div>
+    </div>
         <div class="drivers-address-latitude">
           <%= driver.latitude %>
         </div>
@@ -15,8 +28,10 @@
           <%= driver.longitude %>
         </div>
       </div>
+
         <% end %>
       <%end %>
 
-    </ol>
+  </div>
+</div>
 </div>
