@@ -21,13 +21,13 @@ class UsersController < ApplicationController
     test_results = []
     current_user.scantrons.each_with_index { |scantron, index|
       test_results << scantron.convert_to_percent if scantron.result != nil
-      exam_labels[index] = Exam.get_exam_by_scantron(scantron).name
+      exam_labels[index] = Exam.get_exam_by_scantron(scantron).name unless scantron.game_name != nil
     }
     g.data current_user.name.to_sym, test_results
 
     g.labels = exam_labels
     g.marker_count = 1
-    g.write('app/assets/images/userexamresults.png')
+    # g.write('app/assets/images/userexamresults.png')
   end
 
   # GET /users/new

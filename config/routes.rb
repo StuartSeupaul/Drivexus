@@ -23,9 +23,8 @@ Rails.application.routes.draw do
   resources :attacheds, only: [:create]
   resources :answers
   resources :scantrons, only: [:create, :update]
-  resources :games, only: [:index]
 
-
+  get 'redlight' => 'games#redlight', :as => :redlight
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
 
