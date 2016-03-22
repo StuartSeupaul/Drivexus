@@ -13,6 +13,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(questions_params)
     if @question.save
       redirect_to questions_path
+
+    else
+      render :new
     end
   end
 

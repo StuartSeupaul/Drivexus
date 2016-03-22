@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   validates :content, :presence => true,
-                      :length => {minimum: 5},
+                      :length => {minimum: 3},
                       :length => {maximum: 200}
 
   has_many :choices
