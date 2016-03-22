@@ -43,7 +43,7 @@
 	padding: 0px;
     font-family: 'Lato', sans-serif;
 }
-body {
+.welcome {
  background: url(../images/header.jpeg) no-repeat center top;
 	margin: 0;
 	color: #5a5a5a;
@@ -143,7 +143,7 @@ a:focus {
 input {
 	font-size: 16px;
 	min-height: 40px;
-	border-radius: 25px;
+	border-radius:0;
 	line-height: 20px;
 	padding: 15px 30px 16px;
 	border: 1px solid #b9b9af;
