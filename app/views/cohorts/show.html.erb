@@ -42,6 +42,14 @@
     <% end %>
   <% end %>
 <% end %>
+<%if Game.get_class_for_game_result(Scantron.get_scantrons_with_game_finished, current_user.id) %>
+  <% game_class = Game.get_class_for_game_result(Scantron.get_scantrons_with_game_finished, current_user.id) %>
+<% end %>
+<div class=<%= game_class %>>
+  Stopping game
+</div>
+
+
 <br>
 <% unless current_user.role == "student" %>
 <%= link_to "Create New Exam", new_cohort_exam_path(@cohort) %>
