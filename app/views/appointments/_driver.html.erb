@@ -12,11 +12,12 @@
         <% @nearby_drivers.each do |driver| %>
         <div class= "show-appointment" data-collect = "<%= driver.id %>" >
 
+
           <div class="row">
           <div class="span6">
-
+              <%= image_tag "Ernest.png" %>
             <div class="span2">
-              <%= driver.photo %>
+
             <%= driver.name  %><br>
             <%= driver.bio %><br>
             </div>
