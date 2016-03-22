@@ -31,4 +31,8 @@ class Scantron < ActiveRecord::Base
     Scantron.where(user_id: user_id).where.not('result' => nil).first
   end
 
+  def self.get_scantrons_with_game_finished
+    Scantron.where.not('game_name' => nil).where.not('result' => nil)
+  end
+
 end
