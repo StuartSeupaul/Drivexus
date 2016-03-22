@@ -3,8 +3,3 @@
 <div class="questionindex">
   <%= render partial: 'form', collection: @questions, as: :question %>
 </div>
-
-<div class="question-trial">
-  <% answers = Question.first.answers_for_a_question * 100 %>
-  <%= Question.average_difficulty_of_question(answers) %>
-</div>

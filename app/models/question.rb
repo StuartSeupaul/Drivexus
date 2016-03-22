@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.average_difficulty_of_question(answers)
-    # return 0.10 if answers = []
+    return 0.25 if answers == []
 
     answer_counter = 0;
     correct_counter = 0;
@@ -31,7 +31,19 @@ class Question < ActiveRecord::Base
       correct_counter += 1 if answer.correct
     end
 
-    correct_counter/answer_counter.round(2)
+    correct_counter/answer_counter.round(3)
+  end
+
+  def self.number_of_stars(difficulty_rating)
+    difficulty_rating *= 100
+    return case difficulty_rating
+    when 90..100 then 1
+    when 75..89 then 2
+    when 60..74 then 3
+    when 30..59 then 4
+    when 0..29 then 5
+    else 0
+    end
   end
 
 end
