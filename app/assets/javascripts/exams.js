@@ -63,8 +63,13 @@ $(document).on('ready page:load', function () {
       dataType: 'script'
     });
 
+
     // hides the submit button once it has been clicked
-    $('#testsubmitbutton').css('display', 'none');
+
+
+
+
+    // $('#testsubmitbutton').css('display', 'none');
 
   });
 

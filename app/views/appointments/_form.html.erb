@@ -1,20 +1,40 @@
-<%= form_tag user_appointments_path, method: :get, remote: true do  %>
+<div class="apt-picker">
 
-<%= label_tag :description %>
-<%= text_field_tag :description, params[:description]%>
 
-<%= label_tag :date %>
-<%= text_field_tag :date, params[:date]%>
 
-<%= label_tag :time %>
-<%= time_field_tag :time, params[:time] %>
+<%= form_tag drivers_path, remote:true, method: :get do   %>
+  <div class="apt-all">
+    <h3>Find an Instructor</h3>
 
-<%= label_tag :address, "Pickup address" %>
-<%= text_field_tag :address, params[:address]%>
+    <div class="dt-picker">
+    <%= label_tag :date %><br>
+    <%= text_field :date, params[:date]%>
+    </div>
 
-<%= submit_tag 'Find an instructor', :id => 'nearby-drivers' %>
+    <div class="st-time">
+      <%= label_tag :start_time, "From" %><br>
+      <%= time_select :start_time, params[:start_time], ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20 %>
+    </div>
+
+
+    <div class="ed-time">
+    <%= label_tag :end_time, "To" %><br>
+    <%= time_select :end_time, params[:end_time], ampm: true,  minute_step: 30, start_hour: 8, end_hour: 20  %>
+    </div>
+
+    <div class="dr-bttn">
+    <%= submit_tag 'Find a nearby instructor', :id => 'nearby-drivers' %><br>
+    </div>
+
+    <div class="ad-picker">
+    <%= label_tag :address, "Pickup address" %><br>
+    <%= text_field_tag :address, params[:address]%>
+    </div>
+
+    <div class="fn-ad">
+    <%= submit_tag 'Find an instructor', :id => 'drivers-by-address' %>
+    </div>
+
+  <% end %>
+    </div>
 </div>
-
-<% end %>
-
-<%= render 'driver' %>

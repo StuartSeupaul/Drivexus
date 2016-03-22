@@ -27,9 +27,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sorcery'
 gem 'geocoder'
 
+gem 'figaro'
+
 gem 'cancancan', '~> 1.10'
 # for nesting forms
 gem 'cocoon'
+
 
 #for graphs and charts
 gem 'gruff'

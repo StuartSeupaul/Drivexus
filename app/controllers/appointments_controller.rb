@@ -4,65 +4,45 @@ class AppointmentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-
-    @users = User.all
     @appointments = @user.appointments
     @appointments_by_date = @appointments.group_by(&:date)
     @date = params[:date] ? Date.parse(params[:date]) :Date.today
 
-    if params[:address]
-    @nearby_drivers = Driver.all.near(params[:address], 10, unit: :km)
-      respond_to do |format|
-        # format.html
-        # format.js
-      end
-    elsif params[:latitude] && params[:longitude]
-    @nearby_drivers = Driver.near([params[:latitude], params[:longitude]], 10, unit: :km)
-    respond_to do |format|
-      # format.html
-      format.js
-    end
-    else
-      @drivers = Driver.all
-    end
-
-
   end
 
   def new
-    @appointment = @user.appointments.new
+    @appointment = @user.appointments.build
   end
-
-#
-#
-
 
 
   def edit
     @appointment = @user.appointments.find(@user_id, @appointment)
+
   end
 
 
   def create
     @appointment = @user.appointments.build(appointment_params)
 
-    if @appointment.save
+      if @appointment.save
 
       respond_to do |format|
 
-        format.html{ redirect_to user_appointment_path(@user,@appointment)}
-        format.js { }
+        format.html{ redirect_to user_appointment_path(@user, @appointment), notice: 'Appointment has successfully created'}
+        format.js {}
       end
       else
-      render :new
+        format.html { render :new, alert: 'Try again'}
+        format.js {}
     end
+
   end
 
   def show
 
     @drivers = Driver.all
 
-    @nearby_drivers.each do |d|
+    @drivers.each do |d|
       [d.name]
     end
 
@@ -85,7 +65,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date,:user_id, :description, :driver_id, :time, :address)
+    params.require(:appointment).permit(:date,:user_id, :description, :driver_id, :start_time, :end_time, :address)
   end
 
   def load_user

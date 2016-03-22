@@ -5,6 +5,7 @@
      <link rel="stylesheet" href"stylesheets/animate.css">
       <%= stylesheet_link_tag    "application" %>
       <%= javascript_include_tag "application" %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_maps_api_key']}&callback=initMap", asnyc: true, defer: true%>
       <%= csrf_meta_tags %>
   </head>
   <body>

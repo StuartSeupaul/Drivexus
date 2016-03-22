@@ -20,12 +20,15 @@
   <% end %>
 
 
-
+<%= @driver.photo %>
 <% @driver.appointments.each do |appointment|%>
 <pre>
 <%= appointment.user.name %>
 <%= appointment.description %><br>
 <%= appointment.date %><br>
-<%= appointment.apt_time %>
+<p>From </p>
+<%= appointment.astart_time %>
+<%= appointment.aend_time %>
+<p>To</p>
 </pre>
 <% end %>
