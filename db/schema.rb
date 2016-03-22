@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316172539) do
+ActiveRecord::Schema.define(version: 20160321210515) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "scantron_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160316172539) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.string   "photo"
   end
 
   create_table "exams", force: :cascade do |t|

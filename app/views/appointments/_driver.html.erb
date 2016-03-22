@@ -1,4 +1,5 @@
 
+
       <div class="show-drivers" >
 
         <div class="row">
@@ -7,9 +8,10 @@
         <div class="span9">
 
       <% if @nearby_drivers.present? %>
+      <h2 class="nr-hd">Nearby Instructor</h2>
         <% @nearby_drivers.each do |driver| %>
-
         <div class= "show-appointment" data-collect = "<%= driver.id %>" >
+
           <div class="row">
           <div class="span6">
 
