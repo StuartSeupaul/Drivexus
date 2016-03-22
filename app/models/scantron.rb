@@ -1,4 +1,6 @@
 class Scantron < ActiveRecord::Base
+  validates :user_id, :presence => true
+
   has_many :answers
   belongs_to :exam
   belongs_to :user

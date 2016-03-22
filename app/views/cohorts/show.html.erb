@@ -42,10 +42,10 @@
     <% end %>
   <% end %>
 <% end %>
-<%if Game.get_class_for_game_result(Scantron.get_scantrons_with_game_finished) %>
-  <%   %>
+<%if Game.get_class_for_game_result(Scantron.get_scantrons_with_game_finished, current_user.id) %>
+  <% game_class = Game.get_class_for_game_result(Scantron.get_scantrons_with_game_finished, current_user.id) %>
 <% end %>
-<div class="cohorts-exam-list">
+<div class=<%= game_class %>>
   Stopping game
 </div>
 
